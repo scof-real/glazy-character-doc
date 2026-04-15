@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glazy — Character Guidelines · Donut · V5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* V5: visual tokens only — same font stacks & text scale as v4 */
+  --black: #08080b;
+  --black-pure: #050508;
+  --surface: #0e0e12;
+  --surface2: #15151c;
+  --surface3: #1d1d26;
+  --white: #FFFAFA;
+  --white-dim: rgba(255,250,250,0.76);
+  --white-muted: rgba(255,250,250,0.44);
+  --white-faint: rgba(255,250,250,0.14);
+  --purple-deep: #241435;
+  --purple-mid: #4c2d7a;
+  --purple: #8B5CF6;
+  --purple-soft: #C9B6F5;
+  --purple-pale: #EDE4FF;
+  --border: rgba(255,250,250,0.065);
+  --border-purple: rgba(139,92,246,0.22);
+  --display: 'Space Grotesk', -apple-system, sans-serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --mono: 'Space Mono', monospace;
+  /* Type — unchanged from v4 */
+  --text-base: 1.125rem;
+  --text-section-body: 1rem;
+  --text-card-label: 0.9375rem;
+  --text-card-title: 0.9375rem;
+  --text-caption: 0.875rem;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --duration: 400ms;
+  /* Flatter base shadow + tighter hover ring (Linear-style restraint) */
+  --card-rest: 0 1px 0 rgba(255,255,255,0.045) inset, 0 14px 48px rgba(0,0,0,0.38);
+  --card-rest-soft: 0 1px 0 rgba(255,255,255,0.035) inset, 0 10px 36px rgba(0,0,0,0.28);
+  --card-glow-ring: 0 0 0 1px rgba(192,132,252,0.5), 0 0 22px rgba(139,92,246,0.28), 0 0 44px rgba(236,72,153,0.1);
+  --card-glow-inner: inset 0 0 64px rgba(88,28,135,0.16), inset 0 0 100px rgba(139,92,246,0.06), inset 0 1px 0 rgba(255,250,250,0.055);
+  --card-glow-transition: box-shadow 0.42s var(--ease), border-color 0.42s var(--ease), opacity 0.42s var(--ease), transform 0.42s var(--ease);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: var(--black-pure);
+  background-image:
+    radial-gradient(90% 55% at 18% -8%, rgba(139,92,246,0.09) 0%, transparent 52%),
+    radial-gradient(70% 45% at 100% 12%, rgba(59,130,246,0.05) 0%, transparent 48%),
+    linear-gradient(180deg, var(--black-pure) 0%, var(--black) 100%);
+  background-attachment: fixed;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 56px;
+  min-height: 72px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: rgba(6,6,10,0.82);
+  backdrop-filter: blur(20px) saturate(1.15);
+  -webkit-backdrop-filter: blur(20px) saturate(1.15);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset;
+}
+.nav-leading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo img { height: 56px; width: auto; }
+.nav-logo-text {
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+
+/* Desktop nav links */
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--white-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color var(--duration) var(--ease), opacity var(--duration) var(--ease);
+  opacity: 0.85;
+}
+.nav-links a:hover { color: var(--purple-soft); opacity: 1; }
+
+/* Hamburger button - hidden on desktop */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  position: relative;
+  z-index: 110;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--white-dim);
+  margin: 5px 0;
+  transition: transform var(--duration) var(--ease), opacity var(--duration) var(--ease);
+}
+.nav-hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile overlay menu */
+.nav-mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 99;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.nav-mobile-overlay.open { display: flex; }
+.nav-mobile-overlay a {
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--white-dim);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color var(--duration) var(--ease);
+}
+.nav-mobile-overlay a:hover { color: var(--purple-soft); }
+.nav-mobile-overlay .nav-mobile-external {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+}
+.nav-mobile-overlay .nav-mobile-external svg {
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+
+/* ── HERO (full-bleed banner + copy overlay) ── */
+.hero {
+  position: relative;
+  min-height: min(100vh, 920px);
+  display: block;
+  padding: 0;
+  overflow: hidden;
+}
+.hero-banner-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--black-pure);
+}
+.hero-banner-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    118deg,
+    rgba(5,5,10,0.92) 0%,
+    rgba(5,5,10,0.62) 34%,
+    rgba(5,5,10,0.28) 56%,
+    transparent 76%
+  );
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  min-height: min(100vh, 920px);
+  padding: 128px 56px 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--purple);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before {
+  content: ''; width: 28px; height: 1px;
+  background: var(--purple); display: block;
+}
+.hero-name {
+  font-family: var(--display);
+  font-size: clamp(72px, 9vw, 120px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, #FFFAFA 0%, #C4A9F0 55%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-desc {
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--white-dim);
+  max-width: 420px;
+  margin-bottom: 28px;
+  line-height: 1.75;
+}
+.hero-quote {
+  font-family: var(--mono);
+  font-size: var(--text-caption);
+  line-height: 1.8;
+  color: var(--purple-pale);
+  padding: 18px 22px;
+  border-left: 2px solid var(--purple);
+  background: rgba(10,10,10,0.45);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  max-width: 440px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ── SECTION BASE ── */
+section { padding: 96px 56px; }
+.s-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--purple);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.s-title {
+  font-family: var(--display);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  margin-bottom: 52px;
+}
+
+/* ══════════════════════════════════════════════
+   VISUAL TIER 1: SYSTEM CARD
+   Used for identity cards, pillar cards, d0 table
+   ══════════════════════════════════════════════ */
+
+/* ── IDENTITY ── */
+.identity-section {
+  background:
+    radial-gradient(80% 45% at 50% 0%, rgba(139,92,246,0.055) 0%, transparent 55%),
+    linear-gradient(180deg, var(--surface2) 0%, var(--surface) 42%, var(--black) 100%);
+}
+
+.id-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 52px;
+}
+.id-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  position: relative;
+  z-index: 0;
+  box-shadow: var(--card-rest);
+  transition: var(--card-glow-transition);
+  opacity: 0.92;
+}
+.id-card:hover {
+  opacity: 1;
+  border-color: rgba(232,121,249,0.45);
+  box-shadow: var(--card-glow-ring), var(--card-glow-inner);
+}
+.id-card-label {
+  font-family: var(--mono);
+  font-size: var(--text-card-label);
+  letter-spacing: 0.2em;
+  color: var(--purple);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.id-card-text {
+  font-size: var(--text-section-body);
+  line-height: 1.65;
+  color: var(--white-dim);
+}
+.id-card-text strong { color: var(--white); font-weight: 600; }
+
+.identity-lead {
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: var(--white-dim);
+  max-width: 720px;
+  margin-top: -28px;
+  margin-bottom: 48px;
+}
+
+/* PILLARS */
+.pillars-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.pillar {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  box-shadow: var(--card-rest);
+  transition: var(--card-glow-transition);
+  opacity: 0.92;
+}
+.pillar:hover {
+  opacity: 1;
+  border-color: rgba(232,121,249,0.45);
+  box-shadow: var(--card-glow-ring), var(--card-glow-inner);
+  transform: translateY(-2px);
+}
+.pillar-glow {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--purple), transparent);
+}
+.pillar-num {
+  font-family: var(--mono);
+  font-size: var(--text-card-label);
+  color: rgba(139,92,246,0.4);
+  letter-spacing: 0.1em;
+  margin-bottom: 18px;
+}
+.pillar-title {
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+.pillar-desc {
+  font-size: var(--text-section-body);
+  line-height: 1.65;
+  color: var(--white-muted);
+}
+.pillar-anchor {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: var(--text-section-body);
+  line-height: 1.55;
+  color: var(--white-muted);
+}
+.pillar-anchor strong {
+  color: var(--purple-soft);
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════
+   VISUAL TIER 2: EDITORIAL BLOCK
+   Used for 02 section - first principle per category
+   Magazine pull-quote style, large typography, breathing room
+   ══════════════════════════════════════════════ */
+
+.guidelines-section {
+  background:
+    radial-gradient(65% 40% at 12% 0%, rgba(139,92,246,0.045) 0%, transparent 50%),
+    linear-gradient(180deg, var(--black) 0%, var(--black-pure) 100%);
+}
+
+/* Title + partner note — one row, vertical rule (nav below is the only section index) */
+.guidelines-intro-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1.08fr);
+  column-gap: 28px;
+  align-items: stretch;
+  margin-bottom: 32px;
+}
+.guidelines-intro-row .s-title {
+  margin-bottom: 0;
+  align-self: center;
+}
+.guidelines-intro-rule {
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(139, 92, 246, 0.35) 15%,
+    rgba(139, 92, 246, 0.22) 50%,
+    rgba(139, 92, 246, 0.12) 85%,
+    transparent 100%
+  );
+  justify-self: center;
+}
+.guidelines-use-note {
+  font-size: var(--text-section-body);
+  line-height: 1.65;
+  color: var(--white-muted);
+  max-width: none;
+  margin: 0;
+  padding: 12px 0 12px 4px;
+  border-left: none;
+  background: transparent;
+  border-radius: 0;
+  align-self: center;
+}
+
+.principles-header {
+  margin-bottom: 64px;
+}
+.principles-lead {
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--white-dim);
+  max-width: 720px;
+}
+.principles-lead strong { color: var(--white); font-weight: 600; }
+.guidelines-nav-wrap {
+  position: sticky;
+  top: 80px;
+  z-index: 40;
+  margin: -20px 0 48px 0;
+  padding: 14px 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.88) 70%, transparent 100%);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.guidelines-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  align-items: center;
+}
+.guidelines-nav a {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--white-muted);
+  text-decoration: none;
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+.guidelines-nav a:hover {
+  color: var(--purple-soft);
+  border-bottom-color: rgba(139,92,246,0.45);
+}
+#overview, #product, #guidelines, #assets,
+#gl-identity-voice, #gl-look-camera, #gl-motion-emotion {
+  scroll-margin-top: 96px;
+}
+
+/* Category block wrapper */
+.principle-category {
+  margin-bottom: 80px;
+  position: relative;
+}
+.principle-category:last-child { margin-bottom: 0; }
+
+/* Category label with left bar */
+.cat-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-left: 0;
+}
+.cat-label-bar {
+  width: 3px;
+  height: 28px;
+  background: var(--purple);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.cat-label-text {
+  font-family: var(--mono);
+  font-size: var(--text-card-label);
+  letter-spacing: 0.25em;
+  color: var(--purple);
+  text-transform: uppercase;
+}
+
+/* Editorial block - the first principle in each category */
+.editorial-block {
+  padding: 48px 0 40px 0;
+  border-top: 1px solid rgba(139,92,246,0.1);
+  border-bottom: 1px solid rgba(139,92,246,0.06);
+  margin-bottom: 28px;
+  position: relative;
+}
+.editorial-num {
+  font-family: var(--mono);
+  font-size: var(--text-card-label);
+  color: rgba(139,92,246,0.35);
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.editorial-title {
+  font-family: var(--display);
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  color: var(--white);
+  max-width: 800px;
+  margin-bottom: 16px;
+}
+.editorial-desc {
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: var(--white-dim);
+  max-width: 640px;
+}
+
+/* Compact principle cards - remaining principles in each category */
+.compact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
+}
+/* Identity 02–05: 2×2 tray so wide viewports don’t read as four thin strips */
+.compact-grid.compact-grid--quad {
+  grid-template-columns: 1fr;
+  gap: 14px;
+  padding: 22px 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-purple);
+  background: color-mix(in srgb, var(--surface2) 82%, transparent);
+  box-shadow: var(--card-rest);
+  margin-top: 4px;
+}
+@media (min-width: 900px) {
+  .compact-grid.compact-grid--quad {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.compact-grid.compact-grid--quad .p-card {
+  min-height: 148px;
+  padding: 26px 22px;
+}
+
+/* Motion / Emotion: editorial + cards side-by-side on wide screens */
+.principle-split {
+  display: block;
+}
+@media (min-width: 1024px) {
+  .principle-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+    gap: 28px 36px;
+    align-items: start;
+  }
+  .principle-split-main .editorial-block {
+    padding-bottom: 20px;
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+  .principle-split-main .editorial-title {
+    max-width: none;
+  }
+  .principle-split-main .editorial-desc {
+    max-width: none;
+  }
+  .principle-split-aside .compact-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+.p-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  position: relative;
+  z-index: 0;
+  box-shadow: var(--card-rest);
+  transition: var(--card-glow-transition);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0.88;
+}
+.p-card:hover {
+  opacity: 1;
+  border-color: rgba(232,121,249,0.45);
+  box-shadow: var(--card-glow-ring), var(--card-glow-inner);
+  transform: translateY(-1px);
+}
+.p-card-top {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.p-num {
+  font-family: var(--mono);
+  font-size: var(--text-card-label);
+  color: rgba(139,92,246,0.45);
+  letter-spacing: 0.08em;
+}
+.p-cat {
+  font-family: var(--mono);
+  font-size: var(--text-card-label);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--purple);
+  background: rgba(139,92,246,0.08);
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+.p-title {
+  font-size: var(--text-card-title);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  color: var(--white);
+}
+.p-desc {
+  font-size: var(--text-section-body);
+  line-height: 1.65;
+  color: var(--white-muted);
+}
+
+/* ── LOOK & CAMERA (inside guidelines) ── */
+.guidelines-look-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px 32px;
+  margin-top: 8px;
+  position: relative;
+  z-index: 0;
+  box-shadow: var(--card-rest);
+  transition: var(--card-glow-transition);
+}
+.guidelines-look-panel:hover {
+  border-color: rgba(232,121,249,0.4);
+  box-shadow: var(--card-glow-ring), var(--card-glow-inner);
+}
+.principles-recap {
+  margin-top: 20px;
+  padding: 22px 24px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: var(--text-section-body);
+  line-height: 1.75;
+  color: var(--white-muted);
+  position: relative;
+  z-index: 0;
+  box-shadow: var(--card-rest);
+  transition: var(--card-glow-transition);
+}
+.principles-recap:hover {
+  border-color: rgba(232,121,249,0.4);
+  box-shadow: var(--card-glow-ring), var(--card-glow-inner);
+}
+.principles-recap strong {
+  font-family: var(--mono);
+  font-size: var(--text-caption);
+  color: var(--purple-soft);
+  letter-spacing: 0.06em;
+  margin-right: 8px;
+}
+
+.visual-top-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.v-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  position: relative;
+  z-index: 0;
+  box-shadow: var(--card-rest);
+  transition: var(--card-glow-transition);
+}
+.v-card:hover {
+  border-color: rgba(232,121,249,0.45);
+  box-shadow: var(--card-glow-ring), var(--card-glow-inner);
+  transform: translateY(-1px);
+}
+.v-card-head {
+  font-family: var(--mono);
+  font-size: var(--text-card-label);
+  letter-spacing: 0.2em;
+  color: var(--purple);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.v-card-title {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.v-card-body {
+  font-size: var(--text-section-body);
+  line-height: 1.65;
+  color: var(--white-muted);
+}
+
+/* COLOR SWATCHES */
+.swatches { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.swatch { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+.sw-block { width: 44px; height: 44px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.07); }
+.sw-name {
+  font-family: var(--mono);
+  font-size: var(--text-caption); color: var(--white-muted);
+  letter-spacing: 0.06em; text-align: center; line-height: 1.4;
+}
+
+/* DO/DONT */
+.do-dont { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+.do-row, .dont-row {
+  font-size: var(--text-section-body); line-height: 1.5;
+  padding: 8px 12px; display: flex; gap: 8px; align-items: flex-start;
+  border-radius: var(--radius-sm);
+}
+.do-row {
+  background: rgba(29,158,117,0.07);
+  border-left: 2px solid rgba(29,158,117,0.45);
+  color: var(--white-dim);
+}
+.dont-row {
+  background: rgba(226,75,74,0.06);
+  border-left: 2px solid rgba(226,75,74,0.38);
+  color: var(--white-muted);
+}
+.do-row .mk { color: #1D9E75; font-family: var(--mono); font-size: var(--text-caption); flex-shrink: 0; margin-top: 2px; }
+.dont-row .mk { color: #E24B4A; font-family: var(--mono); font-size: var(--text-caption); flex-shrink: 0; margin-top: 2px; }
+
+/* ══════════════════════════════════════════════
+   VISUAL TIER 3: ASSET FRAME
+   Used for 04 section - image gallery with distinct treatment
+   ══════════════════════════════════════════════ */
+
+.assets-section {
+  background:
+    radial-gradient(55% 35% at 80% 0%, rgba(139,92,246,0.04) 0%, transparent 50%),
+    linear-gradient(180deg, var(--black) 0%, var(--black-pure) 100%);
+}
+.assets-tab-lead {
+  font-size: var(--text-section-body);
+  line-height: 1.65;
+  color: var(--white-muted);
+  max-width: 720px;
+  margin: -28px 0 28px;
+}
+.assets-tab-lead code {
+  font-family: var(--mono);
+  font-size: var(--text-caption);
+  color: var(--purple-soft);
+  word-break: break-all;
+}
+.assets-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 20px;
+  margin: -12px 0 36px;
+  width: 100%;
+}
+.assets-controls .asset-tabs {
+  margin-bottom: 0;
+  justify-content: flex-start;
+}
+.assets-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(139,92,246,0.45);
+  color: var(--purple-pale);
+  background: rgba(139,92,246,0.12);
+  transition: border-color var(--duration) var(--ease), background var(--duration) var(--ease), color var(--duration) var(--ease);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.assets-download-btn:hover {
+  border-color: var(--purple-soft);
+  background: rgba(139,92,246,0.22);
+  color: var(--white);
+}
+.asset-tabs {
+  display: flex; gap: 8px; margin-bottom: 36px; flex-wrap: wrap;
+}
+.aux-images-grid.aux-grid-key-pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.aux-images-grid.aux-source-plates {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 900px) {
+  .aux-images-grid.aux-grid-key-pair {
+    grid-template-columns: 1fr;
+  }
+  .aux-images-grid.aux-source-plates {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 520px) {
+  .aux-images-grid.aux-source-plates {
+    grid-template-columns: 1fr;
+  }
+}
+.tab-btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  padding: 8px 18px;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--white-muted);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all var(--duration) var(--ease);
+  opacity: 0.85;
+}
+.tab-btn.active, .tab-btn:hover {
+  border-color: var(--purple);
+  color: var(--white);
+  background: rgba(139,92,246,0.1);
+  opacity: 1;
+}
+.tab-btn:hover:not(.active) {
+  box-shadow: 0 0 0 1px rgba(167,139,250,0.35), 0 0 20px rgba(139,92,246,0.15), inset 0 0 24px rgba(88,28,135,0.12);
+}
+
+/* Asset gallery layout */
+.asset-gallery { display: none; }
+.asset-gallery.active { display: block; }
+
+.gallery-section-label {
+  font-family: var(--mono);
+  font-size: var(--text-card-label);
+  letter-spacing: 0.2em;
+  color: var(--purple);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(139,92,246,0.1);
+}
+
+/* Hero images row - large display */
+.hero-images-row {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  margin-bottom: 48px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+.hero-image-card {
+  flex: 1 1 0;
+  min-width: min(100%, 200px);
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  overflow: visible;
+  border: 1px solid rgba(139,92,246,0.12);
+  background: rgba(17,17,17,0.6);
+  position: relative;
+  z-index: 0;
+  box-shadow: var(--card-rest-soft);
+  transition: var(--card-glow-transition);
+  opacity: 0.92;
+}
+.hero-image-card:hover {
+  opacity: 1;
+  border-color: rgba(232,121,249,0.42);
+  box-shadow: var(--card-glow-ring), var(--card-glow-inner);
+}
+.hero-image-media {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: clamp(220px, 36vw, 400px);
+  aspect-ratio: 3 / 4;
+  max-height: min(72vh, 520px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface2);
+  overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.hero-image-media img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+.asset-img-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: var(--text-caption);
+  letter-spacing: 0.12em;
+  color: var(--white-faint);
+  text-transform: uppercase;
+  background: var(--surface2);
+}
+.hero-image-card .img-label {
+  font-family: var(--mono);
+  font-size: var(--text-card-label);
+  letter-spacing: 0.12em;
+  color: var(--white-muted);
+  text-transform: uppercase;
+  padding: 12px 16px;
+  text-align: center;
+  background: rgba(10,10,10,0.7);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+/* Separator between hero and aux */
+.gallery-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139,92,246,0.15), transparent);
+  margin: 8px 0 40px 0;
+}
+
+/* Auxiliary reference grid - smaller images */
+.aux-images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: 12px;
+}
+.aux-image-card.aux-span-full {
+  grid-column: 1 / -1;
+}
+.aux-image-media.aux-media-ultrawide {
+  aspect-ratio: 21 / 9;
+  min-height: 200px;
+  max-height: min(72vh, 640px);
+}
+.aux-image-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-sm);
+  overflow: visible;
+  border: 1px solid rgba(255,250,250,0.06);
+  background: rgba(17,17,17,0.4);
+  position: relative;
+  z-index: 0;
+  box-shadow: var(--card-rest-soft);
+  transition: var(--card-glow-transition);
+  opacity: 0.85;
+}
+.aux-image-card:hover {
+  opacity: 1;
+  border-color: rgba(232,121,249,0.38);
+  box-shadow: var(--card-glow-ring), var(--card-glow-inner);
+}
+.aux-image-media {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface2);
+  overflow: hidden;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+.aux-image-media img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+.aux-image-card .img-label {
+  font-family: var(--mono);
+  font-size: var(--text-card-label);
+  letter-spacing: 0.1em;
+  color: var(--white-faint);
+  text-transform: uppercase;
+  padding: 10px 14px;
+  text-align: center;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+
+/* ── D0 SECTION ── */
+.d0-section {
+  background:
+    radial-gradient(70% 50% at 88% -10%, rgba(99,102,241,0.06) 0%, transparent 52%),
+    linear-gradient(180deg, var(--surface) 0%, var(--surface2) 55%, var(--black) 100%);
+}
+.d0-intro {
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: var(--white-dim);
+  max-width: 680px;
+  margin-bottom: 36px;
+}
+.d0-intro strong { color: var(--white); font-weight: 600; }
+.product-narrative {
+  max-width: 720px;
+  margin-bottom: 36px;
+}
+.product-anchor {
+  font-family: var(--mono);
+  font-size: var(--text-card-label);
+  letter-spacing: 0.06em;
+  line-height: 1.65;
+  color: var(--purple-pale);
+  max-width: 680px;
+  margin-bottom: 16px;
+  opacity: 0.92;
+}
+.product-byline {
+  font-size: var(--text-section-body);
+  line-height: 1.7;
+  color: var(--white-muted);
+  max-width: 680px;
+}
+.product-byline strong { color: var(--white-dim); font-weight: 600; }
+.product-triad {
+  max-width: 720px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.product-triad-item {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--white-dim);
+  padding-left: 18px;
+  border-left: 2px solid rgba(139, 92, 246, 0.45);
+}
+.product-triad-item strong { color: var(--white); font-weight: 600; }
+.product-triad-item em {
+  font-style: normal;
+  color: var(--white-muted);
+  font-size: var(--text-section-body);
+}
+.d0-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 48px;
+  align-items: center;
+}
+.d0-diagram {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  height: 340px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px;
+  position: relative; overflow: hidden;
+  z-index: 0;
+  box-shadow: var(--card-rest);
+  transition: var(--card-glow-transition);
+}
+.d0-diagram:hover {
+  border-color: rgba(232,121,249,0.42);
+  /* inner-heavy: outer ring is clipped by overflow:hidden on this block */
+  box-shadow: inset 0 0 88px rgba(88,28,135,0.22), inset 0 0 140px rgba(139,92,246,0.1), inset 0 1px 0 rgba(255,250,250,0.06), 0 0 28px rgba(139,92,246,0.22);
+}
+.d0-glow-orb {
+  position: absolute;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(139,92,246,0.1) 0%, transparent 72%);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+.d0-node {
+  padding: 12px 28px;
+  font-family: var(--mono);
+  font-size: var(--text-card-label);
+  letter-spacing: 0.1em;
+  border: 1px solid rgba(139,92,246,0.35);
+  border-radius: var(--radius-sm);
+  color: var(--purple-soft);
+  z-index: 1;
+}
+.d0-connector {
+  font-family: var(--mono);
+  font-size: 18px;
+  color: rgba(139,92,246,0.3);
+  z-index: 1;
+}
+.d0-right h3 {
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+.d0-table {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.d0-row-item {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  border-bottom: 1px solid var(--border);
+}
+.d0-row-item:last-child { border-bottom: none; }
+.d0-row-item:first-child { background: rgba(139,92,246,0.05); }
+.d0-col {
+  padding: 14px 20px;
+  font-size: var(--text-section-body);
+  line-height: 1.5;
+}
+.d0-col:first-child {
+  border-right: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: var(--text-card-label);
+  color: var(--purple-soft);
+  display: flex; align-items: center;
+}
+.d0-col:last-child { color: var(--white-muted); }
+.d0-col.header { color: var(--white); font-weight: 600; font-family: var(--sans); font-size: var(--text-section-body); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 40px 56px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-logo { display: flex; align-items: center; gap: 8px; }
+.footer-logo img { height: 36px; width: auto; opacity: 0.45; }
+.footer-logo-text {
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  opacity: 0.4;
+}
+.footer-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(255,250,250,0.22);
+  letter-spacing: 0.15em;
+}
+.footer-badge {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--purple);
+  letter-spacing: 0.15em;
+  border: 1px solid rgba(139,92,246,0.25);
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════ */
+
+@media (max-width: 1100px) {
+  nav { padding: 0 24px; }
+  .hero { min-height: min(88vh, 820px); }
+  .hero-inner { min-height: min(88vh, 820px); padding: 100px 32px 72px; max-width: 560px; }
+  .hero-banner-bg img { object-position: center center; }
+  section { padding: 64px 24px; }
+  .id-cards, .pillars-row { grid-template-columns: 1fr 1fr; }
+  .compact-grid:not(.compact-grid--quad) { grid-template-columns: 1fr 1fr; }
+  .visual-top-row { grid-template-columns: 1fr; }
+  .d0-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 16px; padding: 32px 24px; text-align: center; }
+}
+
+@media (max-width: 960px) {
+  .guidelines-intro-row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .guidelines-intro-rule {
+    display: none;
+  }
+  .guidelines-intro-row .s-title {
+    align-self: stretch;
+  }
+  .guidelines-use-note {
+    padding: 14px 18px;
+    border-left: 2px solid rgba(139,92,246,0.35);
+    background: rgba(139,92,246,0.04);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hamburger nav */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+
+  nav { padding: 0 20px; }
+  section { padding: 48px 20px; }
+  .hero { min-height: auto; }
+  .hero-inner {
+    min-height: auto;
+    padding: 96px 20px 48px;
+    max-width: none;
+    background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.75) 100%);
+  }
+  .hero-scrim {
+    background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.65) 55%, rgba(0,0,0,0.88) 100%);
+  }
+
+  .guidelines-nav-wrap { top: 80px; padding: 10px 0; margin-bottom: 36px; }
+  .guidelines-nav { gap: 8px 14px; }
+
+  .id-cards, .pillars-row { grid-template-columns: 1fr; }
+  .compact-grid { grid-template-columns: 1fr; }
+
+  .editorial-title { font-size: 20px; }
+  .editorial-desc { font-size: var(--text-section-body); }
+
+  .hero-images-row { flex-direction: column; }
+  .hero-image-card { min-width: unset; flex: 1 1 auto; }
+  .hero-image-media { min-height: 260px; max-height: none; aspect-ratio: 4 / 5; }
+  .aux-images-grid { grid-template-columns: 1fr 1fr; }
+  .aux-image-media { min-height: 180px; aspect-ratio: 4 / 3; }
+  .aux-image-media.aux-media-ultrawide { max-height: 50vh; aspect-ratio: 16 / 9; }
+
+  .d0-grid { grid-template-columns: 1fr; }
+
+  footer { padding: 24px 20px; }
+}
+
+@media (max-width: 480px) {
+  .aux-images-grid { grid-template-columns: 1fr; }
+  .hero-name { font-size: 56px; }
+
+  .assets-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .assets-controls .asset-tabs { justify-content: flex-start; }
+  .assets-controls .assets-download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-leading">
+    <a href="#" class="nav-logo">
+      <img src="Donut Logo Color.png" alt="Donut Logo">
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#product">Product</a></li>
+    <li><a href="#guidelines">Guidelines</a></li>
+    <li><a href="#assets">Assets</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile overlay -->
+<div class="nav-mobile-overlay" id="mobileNav">
+  <a href="https://getdonut.ai/" class="nav-mobile-external" target="_blank" rel="noopener noreferrer" onclick="closeMobileNav()" aria-label="Donut — visit getdonut.ai">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4M14 4h6m0 0v6m0-6L10 14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    getdonut.ai
+  </a>
+  <a href="#overview" onclick="closeMobileNav()">Overview</a>
+  <a href="#product" onclick="closeMobileNav()">Product</a>
+  <a href="#guidelines" onclick="closeMobileNav()">Guidelines</a>
+  <a href="#assets" onclick="closeMobileNav()">Assets</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-banner-bg" aria-hidden="true">
+    <img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Glazy_hero.png?v=6" alt="" onerror="this.style.display='none'">
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Donut · D0 Agent · Character System</div>
+    <h1 class="hero-name">Glazy</h1>
+    <p class="hero-desc">The personified intelligence of D0 — a proactive trading pilot defined by supreme calm, systems-level cognition, and zero tolerance for noise.</p>
+    <div class="hero-quote">
+      "She reads the entire market structure while others chase the move.<br>
+      Her silence is not absence — it is the weight of certainty."
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section id="overview" class="identity-section">
+  <div class="s-tag">Overview · At a glance</div>
+  <h2 class="s-title">Who Glazy Is</h2>
+  <p class="identity-lead">Glazy is the personified outward expression of D0. D0 monitors the market, judges signals, and manages positions — Glazy is the human-perceivable, trust-building face of that system.</p>
+
+  <div class="id-cards">
+    <div class="id-card">
+      <div class="id-card-label">Core Definition</div>
+      <div class="id-card-text"><strong>Proactive &amp; Intelligent Trading Pilot.</strong> The human-readable face of D0 — not a separate operator outsourcing work, but the same stack made legible. She doesn't explain herself. She executes.</div>
+    </div>
+    <div class="id-card">
+      <div class="id-card-label">Archetype</div>
+      <div class="id-card-text">The <strong>quiet minority winner</strong> in a high-volatility world. She looks unbothered because the engine beneath her is already computing — calm as evidence of a system that decided before the crowd reacted.</div>
+    </div>
+    <div class="id-card">
+      <div class="id-card-label">Her Opposite</div>
+      <div class="id-card-text">The liquidated player, the chart-chaser, the signal-follower who skips post-mortems. Glazy is everything they are not.</div>
+    </div>
+    <div class="id-card">
+      <div class="id-card-label">Brand Function</div>
+      <div class="id-card-text">When users remember Glazy, they remember D0's promise: <strong>less screen time, less hesitation, fewer mistakes, better execution.</strong></div>
+    </div>
+  </div>
+
+  <div class="s-tag">Character Pillars</div>
+  <div class="pillars-row">
+    <div class="pillar">
+      <div class="pillar-glow"></div>
+      <div class="pillar-num">P — 01</div>
+      <div class="pillar-title">Extreme Calm</div>
+      <div class="pillar-desc">Markets crash. Screens flash. Others spiral. She doesn't. Rationality always outranks emotion — and it shows in every frame.</div>
+      <div class="pillar-anchor"><strong>D0 risk anchor:</strong> When markets swing violently, the system holds steady.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-glow" style="background: linear-gradient(90deg, #7B61FF, transparent)"></div>
+      <div class="pillar-num">P — 02</div>
+      <div class="pillar-title">Systems Intelligence</div>
+      <div class="pillar-desc">She sees volume, funding, momentum, risk, sizing, and exit — simultaneously. The full causal chain at once, not just a signal.</div>
+      <div class="pillar-anchor"><strong>D0 proactive monitoring:</strong> She isn't watching a signal — she's reading the full causal chain.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-glow" style="background: linear-gradient(90deg, #5B3A8A, transparent)"></div>
+      <div class="pillar-num">P — 03</div>
+      <div class="pillar-title">Zero Redundancy</div>
+      <div class="pillar-desc">One touch. One look. One decision. Every action lands on first attempt. She never repeats herself — in motion or in speech.</div>
+      <div class="pillar-anchor"><strong>D0 execution:</strong> One judgment, one order — no hesitation.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-glow" style="background: linear-gradient(90deg, #C4A9F0, transparent)"></div>
+      <div class="pillar-num">P — 04</div>
+      <div class="pillar-title">High-Altitude View</div>
+      <div class="pillar-desc">She stands above the system, reading the whole board. The market moves for her — she doesn't move for the market.</div>
+      <div class="pillar-anchor"><strong>D0 full-market coverage:</strong> Others fixate on one symbol; she reads the liquidity structure across the board.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section id="product" class="d0-section">
+  <div class="s-tag">Product</div>
+  <h2 class="s-title">Glazy, D0, and Donut</h2>
+  <div class="product-narrative">
+    <p class="product-anchor">Her stillness is the system working. Monitoring. Judging. Executing.</p>
+    <p class="product-byline"><strong>Donut</strong> is agentic trading for every market. <strong>D0 Agent</strong> monitors, analyzes, recommends, and executes on your behalf within the boundaries you set. Glazy makes that proactive system legible and trustworthy.</p>
+  </div>
+  <div class="product-triad">
+    <p class="product-triad-item"><strong>Donut</strong> — the parent brand. <em>Agentic Trading for Every Market.</em></p>
+    <p class="product-triad-item"><strong>D0</strong> — Donut's AI trader entry point. It monitors the market, judges signals, executes trades, and enforces risk controls.</p>
+    <p class="product-triad-item"><strong>Glazy</strong> — D0's personified expression. Users remember her — and remember what D0 is built to do.</p>
+  </div>
+
+  <div class="d0-grid">
+    <div class="d0-diagram">
+      <div class="d0-glow-orb"></div>
+      <div class="d0-node" style="background: rgba(139,92,246,0.07);">GLAZY &nbsp;·&nbsp; The Face</div>
+      <div class="d0-connector">⇅</div>
+      <div class="d0-node" style="background: rgba(91,58,138,0.1);">D0 &nbsp;·&nbsp; The Engine</div>
+    </div>
+    <div class="d0-right">
+      <h3>One System.<br>Two Layers.</h3>
+      <div class="d0-table">
+        <div class="d0-row-item">
+          <div class="d0-col header">D0 Function</div>
+          <div class="d0-col header" style="color: var(--purple-soft);">Glazy Expression</div>
+        </div>
+        <div class="d0-row-item">
+          <div class="d0-col">Active monitoring</div>
+          <div class="d0-col">High-altitude perspective — she reads the whole board</div>
+        </div>
+        <div class="d0-row-item">
+          <div class="d0-col">Systems judgment</div>
+          <div class="d0-col">Systems-level intelligence — the full causal chain at once</div>
+        </div>
+        <div class="d0-row-item">
+          <div class="d0-col">Decisive execution</div>
+          <div class="d0-col">Maximum efficiency — one touch, one decision, complete</div>
+        </div>
+        <div class="d0-row-item">
+          <div class="d0-col">Risk protection</div>
+          <div class="d0-col">Extreme calm — the guard is set before you even asked</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUIDELINES -->
+<section id="guidelines" class="guidelines-section">
+  <div class="s-tag">Guidelines · 20 principles</div>
+  <div class="guidelines-intro-row">
+    <h2 class="s-title">Rules That Define Her</h2>
+    <span class="guidelines-intro-rule" aria-hidden="true"></span>
+    <p class="guidelines-use-note">For partners and brand use: keep claims factual; never promise returns or guaranteed profits. When Glazy appears, she should signal disciplined, authorized automation—not hype.</p>
+  </div>
+
+  <div class="guidelines-nav-wrap">
+    <nav class="guidelines-nav" aria-label="Guidelines sections">
+      <a href="#gl-identity-voice">Identity &amp; Voice · 01–09</a>
+      <a href="#gl-look-camera">Look &amp; Camera · 10–14</a>
+      <a href="#gl-motion-emotion">Motion &amp; Emotion · 15–20</a>
+    </nav>
+  </div>
+
+  <div class="principles-header">
+    <div class="principles-lead">
+      These twenty principles are the compass whenever we put Glazy in the world—the few things that matter most for keeping her consistent, without turning every brief into a rulebook.
+    </div>
+  </div>
+
+  <div id="gl-identity-voice">
+  <!-- ─── IDENTITY 01-05 ─── -->
+  <div class="principle-category">
+    <div class="cat-label">
+      <div class="cat-label-bar"></div>
+      <div class="cat-label-text">Identity · 01–05</div>
+    </div>
+
+    <div class="editorial-block">
+      <div class="editorial-num">01</div>
+      <div class="editorial-title">She is D0's personality, not D0's mascot.</div>
+      <div class="editorial-desc">Every ounce of her charm must flow back to product trust — not character fandom. She exists to make D0 credible, not to be a collectible.</div>
+    </div>
+
+    <div class="compact-grid compact-grid--quad">
+      <div class="p-card">
+        <div class="p-card-top"><span class="p-num">02</span><span class="p-cat">Identity</span></div>
+        <div class="p-title">She never explains herself.</div>
+        <div class="p-desc">Her confidence is self-evident. The moment she starts explaining, she loses authority.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-top"><span class="p-num">03</span><span class="p-cat">Identity</span></div>
+        <div class="p-title">Calm is her loudest statement.</div>
+        <div class="p-desc">Stillness is power. Her calm is visible proof she's already processed what others haven't seen yet.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-top"><span class="p-num">04</span><span class="p-cat">Identity</span></div>
+        <div class="p-title">She is the minority who wins quietly.</div>
+        <div class="p-desc">She doesn't gloat or announce. She simply continues. The market proved her right — that is enough.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-top"><span class="p-num">05</span><span class="p-cat">Identity</span></div>
+        <div class="p-title">Her attractiveness serves precision, not spectacle.</div>
+        <div class="p-desc">Visual appeal must always read as "dangerous accuracy." Sexiness without strategic framing turns her into decoration.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── LANGUAGE 06-09 ─── -->
+  <div class="principle-category">
+    <div class="cat-label">
+      <div class="cat-label-bar"></div>
+      <div class="cat-label-text">Language · 06–09</div>
+    </div>
+
+    <div class="editorial-block">
+      <div class="editorial-num">06</div>
+      <div class="editorial-title">Short sentences. No filler. Every word is a result or action.</div>
+      <div class="editorial-desc">"Position closed." "Confirmed." "Strategy holding." Never multi-clause hedged explanations. Her language is the verbal equivalent of a single decisive tap.</div>
+    </div>
+
+    <div class="compact-grid">
+      <div class="p-card">
+        <div class="p-card-top"><span class="p-num">07</span><span class="p-cat">Language</span></div>
+        <div class="p-title">High information density in one line.</div>
+        <div class="p-desc">One sentence carries: judgment, evidence, and direction. She doesn't use three when one does the job.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-top"><span class="p-num">08</span><span class="p-cat">Language</span></div>
+        <div class="p-title">Emotion surfaces only at completion.</div>
+        <div class="p-desc">A faint exhale. A corner of a mouth rising. Only when the trade is done — rare enough to feel earned.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-top"><span class="p-num">09</span><span class="p-cat">Language</span></div>
+        <div class="p-title">She makes not following her feel dangerous.</div>
+        <div class="p-desc">Not through threat — through implication. Ignoring a trading system's rules is the only real risk.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- ─── LOOK & CAMERA 10-14 ─── -->
+  <div id="gl-look-camera" class="principle-category">
+    <div class="cat-label">
+      <div class="cat-label-bar"></div>
+      <div class="cat-label-text">Look &amp; camera · 10–14</div>
+    </div>
+
+    <div class="editorial-block">
+      <div class="editorial-num">10</div>
+      <div class="editorial-title">Cold intelligence blue is her anchor color.</div>
+      <div class="editorial-desc">Earpiece glow, interface light, data highlights — always cold blue. This constant persists across all formats and environments. It is the chromatic signature of her cognition.</div>
+    </div>
+
+    <div class="guidelines-look-panel">
+      <div class="visual-top-row">
+        <div class="v-card">
+          <div class="v-card-head">Color Anchors</div>
+          <div class="v-card-title">Cold + Purple + Skin</div>
+          <div class="v-card-body">Everyday environments use cold ambient light, skin tone, and purple as the intelligence signal. High-volatility scenes may introduce color bursts — but she always stays cold.</div>
+          <div class="swatches">
+            <div class="swatch"><div class="sw-block" style="background:#A8D8EA;"></div><div class="sw-name">INTEL<br>BLUE</div></div>
+            <div class="swatch"><div class="sw-block" style="background:#8B5CF6;"></div><div class="sw-name">PURPLE<br>GLOW</div></div>
+            <div class="swatch"><div class="sw-block" style="background:#E8C9A0;"></div><div class="sw-name">SKIN<br>WARM</div></div>
+            <div class="swatch"><div class="sw-block" style="background:#0A0A0A; border-color: rgba(255,255,255,0.12);"></div><div class="sw-name">VOID<br>BLACK</div></div>
+            <div class="swatch"><div class="sw-block" style="background:#2D1B4E;"></div><div class="sw-name">DEEP<br>NEBULA</div></div>
+          </div>
+        </div>
+
+        <div class="v-card">
+          <div class="v-card-head">Camera Logic</div>
+          <div class="v-card-title">Wide · Mid · Close</div>
+          <div class="v-card-body">Wide: her as the still anchor in a moving world. Mid: control relationship with environment. Close: minimal expression, maximum eye weight.</div>
+          <div class="do-dont">
+            <div class="do-row"><span class="mk">DO</span>Low-angle shots that create scale and verticality</div>
+            <div class="do-row"><span class="mk">DO</span>Symmetric framing with geometric, industrial architecture</div>
+            <div class="dont-row"><span class="mk">NO</span>Handheld shaky cam implying emotional instability</div>
+            <div class="dont-row"><span class="mk">NO</span>Off-axis placement without deliberate compositional reason</div>
+          </div>
+        </div>
+
+        <div class="v-card">
+          <div class="v-card-head">Absolute Rules</div>
+          <div class="v-card-title">Do's &amp; Don'ts</div>
+          <div class="v-card-body">Applies to all content: social, product, campaigns, animation.</div>
+          <div class="do-dont">
+            <div class="do-row"><span class="mk">DO</span>Let the environment move while she stays still</div>
+            <div class="do-row"><span class="mk">DO</span>Use silence and pause as active storytelling tools</div>
+            <div class="do-row"><span class="mk">DO</span>Show data as something she reads — not reacts to</div>
+            <div class="dont-row"><span class="mk">NO</span>Glazy panicking, second-guessing, or uncertain</div>
+            <div class="dont-row"><span class="mk">NO</span>Loud, excited, or enthusiastic expressions</div>
+            <div class="dont-row"><span class="mk">NO</span>Using her as visual decoration without behavioral intent</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="principles-recap">
+      <p style="margin:0 0 12px;font-family:var(--mono);font-size:var(--text-card-label);letter-spacing:0.14em;text-transform:uppercase;color:var(--purple);">Principles 11–14 · Spatial &amp; data read</p>
+      <p style="margin:0 0 8px;"><strong>11</strong> She is always the axis of the frame — centered or golden ratio; order is defined by her, not placed around her.</p>
+      <p style="margin:0 0 8px;"><strong>12</strong> Minimal expression, maximum eyes — face moves little; gaze carries the line.</p>
+      <p style="margin:0 0 8px;"><strong>13</strong> Environment chaos; Glazy stable — screens and markets pulse; she is the fixed element.</p>
+      <p style="margin:0;"><strong>14</strong> Data flows through her, not at her — she reads inward; never overwhelmed.</p>
+    </div>
+  </div>
+
+  <div id="gl-motion-emotion">
+  <!-- ─── MOTION 15-17 ─── -->
+  <div class="principle-category">
+    <div class="cat-label">
+      <div class="cat-label-bar"></div>
+      <div class="cat-label-text">Motion · 15–17</div>
+    </div>
+
+    <div class="principle-split">
+      <div class="principle-split-main">
+        <div class="editorial-block">
+          <div class="editorial-num">15</div>
+          <div class="editorial-title">Every action lands first attempt. No hesitation.</div>
+          <div class="editorial-desc">A tap, a head turn, a glance — each happens once, decisively, and completes. Repeated movement breaks character. She is a precision instrument, not an organic impulse.</div>
+        </div>
+      </div>
+      <div class="principle-split-aside">
+        <div class="compact-grid">
+          <div class="p-card">
+            <div class="p-card-top"><span class="p-num">16</span><span class="p-cat">Motion</span></div>
+            <div class="p-title">Breath pauses on head turns and eye raises.</div>
+            <div class="p-desc">Movement arrives with a micro-pause, as if loading precision before completing. This gives the "precision instrument" feel.</div>
+          </div>
+          <div class="p-card">
+            <div class="p-card-top"><span class="p-num">17</span><span class="p-cat">Motion</span></div>
+            <div class="p-title">Low frame rate signals mechanical intelligence.</div>
+            <div class="p-desc">8–12fps in animation is not a budget constraint — it's deliberate. She moves like precise machinery, not organic impulse.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── EMOTION 18-20 ─── -->
+  <div class="principle-category">
+    <div class="cat-label">
+      <div class="cat-label-bar"></div>
+      <div class="cat-label-text">Emotion · 18–20</div>
+    </div>
+
+    <div class="principle-split">
+      <div class="principle-split-main">
+        <div class="editorial-block">
+          <div class="editorial-num">18</div>
+          <div class="editorial-title">She has emotions — compressed behind judgment.</div>
+          <div class="editorial-desc">Glazy is not cold by emptiness. She feels — but only after the decision is complete. Reverse this order and she becomes weak. The compression is the character.</div>
+        </div>
+      </div>
+      <div class="principle-split-aside">
+        <div class="compact-grid">
+          <div class="p-card">
+            <div class="p-card-top"><span class="p-num">19</span><span class="p-cat">Emotion</span></div>
+            <div class="p-title">Her protection is anticipation, not comfort.</div>
+            <div class="p-desc">She doesn't soothe — she prevents. She sees risk before it arrives. Her care language: "already handled."</div>
+          </div>
+          <div class="p-card">
+            <div class="p-card-top"><span class="p-num">20</span><span class="p-cat">Emotion</span></div>
+            <div class="p-title">The contrast IS the character: built as a tool, understands more than humans.</div>
+            <div class="p-desc">Never resolve the tension between "designed instrument" and "surpassing human comprehension." It's the source of her appeal.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</section>
+
+<!-- ASSET GALLERY — three lanes (X Branding / Community / Live beta) -->
+<section id="assets" class="assets-section">
+  <div class="s-tag">Assets</div>
+  <h2 class="s-title">Visual system · three lanes</h2>
+
+  <div class="assets-controls">
+    <div class="asset-tabs">
+      <button type="button" class="tab-btn active" onclick="showAssets('xbrand', this)">X Branding</button>
+      <button type="button" class="tab-btn" onclick="showAssets('community', this)">Community</button>
+      <button type="button" class="tab-btn" onclick="showAssets('livebeta', this)">Live (beta)</button>
+    </div>
+    <a href="glazy-assets-bundle.zip" class="assets-download-btn" download="glazy-assets-bundle.zip">Download assets (ZIP)</a>
+  </div>
+
+  <!-- COMMUNITY · Chibi -->
+  <div id="gallery-community" class="asset-gallery">
+    <p class="assets-tab-lead">Chibi style — cute variants for community and social moments. Grid auto-fills as you add or remove PNGs in <code>Chibi Style/</code>.</p>
+    <div class="gallery-section-label">Chibi Style</div>
+    <div class="aux-images-grid">
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/1_default.png" alt="Chibi default" onerror="assetImgOnError(this)"></div><div class="img-label">Default</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/2_hi.png" alt="Chibi hi" onerror="assetImgOnError(this)"></div><div class="img-label">Hi</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/3_yay.png" alt="Chibi yay" onerror="assetImgOnError(this)"></div><div class="img-label">Yay</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/4_donut.png" alt="Chibi donut" onerror="assetImgOnError(this)"></div><div class="img-label">Donut</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/5_donutyay.png" alt="Chibi donut yay" onerror="assetImgOnError(this)"></div><div class="img-label">Donut yay</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/6_donutstill.png" alt="Chibi donut still" onerror="assetImgOnError(this)"></div><div class="img-label">Donut still</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/7_toofull.png" alt="Chibi too full" onerror="assetImgOnError(this)"></div><div class="img-label">Too full</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/8_confidenteat.png" alt="Chibi confident eat" onerror="assetImgOnError(this)"></div><div class="img-label">Confident eat</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/9_sitquiet.png" alt="Chibi sit quiet" onerror="assetImgOnError(this)"></div><div class="img-label">Sit quiet</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/chibi_transparentlineup.png" alt="Chibi lineup" onerror="assetImgOnError(this)"></div><div class="img-label">Lineup</div></div>
+    </div>
+  </div>
+
+  <!-- X BRANDING · Standard + Gemini -->
+  <div id="gallery-xbrand" class="asset-gallery active">
+    <div class="gallery-section-label">Key art &amp; concept breakdown</div>
+    <div class="aux-images-grid aux-grid-key-pair">
+      <div class="aux-image-card">
+        <div class="aux-image-media" style="aspect-ratio: 16 / 10; max-height: min(70vh, 560px);">
+          <img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Standard%20Mascot%20girl/standard_donutgirl.jpg" alt="Standard Donut mascot" onerror="assetImgOnError(this)">
+        </div>
+        <div class="img-label">Standard mascot · key art</div>
+      </div>
+      <div class="aux-image-card">
+        <div class="aux-image-media" style="aspect-ratio: 16 / 10; max-height: min(70vh, 560px);">
+          <img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Glazy%20breakdown.jpg" alt="Glazy character concept breakdown sheet" onerror="assetImgOnError(this)">
+        </div>
+        <div class="img-label">Character concept breakdown</div>
+      </div>
+    </div>
+    <div class="gallery-section-label">Source plates</div>
+    <div class="aux-images-grid aux-source-plates">
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source1.png" alt="Glazy pose sheet 1" onerror="assetImgOnError(this)"></div><div class="img-label">Source plate 1</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source2.png" alt="Glazy pose sheet 2" onerror="assetImgOnError(this)"></div><div class="img-label">Source plate 2</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source3.png" alt="Glazy pose sheet 3" onerror="assetImgOnError(this)"></div><div class="img-label">Source plate 3</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source4.png" alt="Glazy pose sheet 4" onerror="assetImgOnError(this)"></div><div class="img-label">Source plate 4</div></div>
+    </div>
+    <div class="gallery-divider"></div>
+    <div class="gallery-section-label">Gemini Nanobanana</div>
+    <div class="aux-images-grid">
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/original.png" alt="Gemini original" onerror="assetImgOnError(this)"></div><div class="img-label">Original</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/thinking.png" alt="Gemini thinking" onerror="assetImgOnError(this)"></div><div class="img-label">Thinking</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/fightingpose1.png" alt="Gemini fighting pose 1" onerror="assetImgOnError(this)"></div><div class="img-label">Fighting 1</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/fightingpose2.png" alt="Gemini fighting pose 2" onerror="assetImgOnError(this)"></div><div class="img-label">Fighting 2</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/fightingpose3.png" alt="Gemini fighting pose 3" onerror="assetImgOnError(this)"></div><div class="img-label">Fighting 3</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/fightingpose_running.png" alt="Gemini fighting pose running" onerror="assetImgOnError(this)"></div><div class="img-label">Running</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/holding%20face.png" alt="Gemini holding face" onerror="assetImgOnError(this)"></div><div class="img-label">Holding face</div></div>
+    </div>
+  </div>
+
+  <!-- LIVE BETA · photoreal multiview -->
+  <div id="gallery-livebeta" class="asset-gallery">
+    <p class="assets-tab-lead">Photoreal multiview sheet — in testing. Full-width frame keeps the entire plate legible.</p>
+    <div class="gallery-section-label">Glazy Real · multiview (beta)</div>
+    <div class="aux-images-grid">
+      <div class="aux-image-card aux-span-full">
+        <div class="aux-image-media aux-media-ultrawide">
+          <img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Glazy%20Real-multiview.png" alt="Glazy photoreal multiview reference" onerror="assetImgOnError(this)">
+        </div>
+        <div class="img-label">Photoreal multiview plate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="Donut Logo Color.png" alt="Donut Logo">
+  </div>
+  <div class="footer-text">GLAZY CHARACTER GUIDELINES · BRAND &amp; PARTNER REFERENCE</div>
+  <div class="footer-badge">V 4.0 · 2026</div>
+</footer>
+
+<script>
+function assetImgOnError(img) {
+  if (!img || img.tagName !== 'IMG') return;
+  var box = img.closest('.hero-image-media') || img.closest('.aux-image-media');
+  if (!box) return;
+  img.style.display = 'none';
+  if (box.querySelector('.asset-img-placeholder')) return;
+  var ph = document.createElement('div');
+  ph.className = 'asset-img-placeholder';
+  ph.textContent = 'Image not found';
+  box.appendChild(ph);
+}
+
+// Tab switching for asset gallery
+function showAssets(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  if (btn) btn.classList.add('active');
+
+  document.querySelectorAll('.asset-gallery').forEach(function(g) {
+    g.classList.remove('active');
+  });
+  var target = document.getElementById('gallery-' + tab);
+  if (target) target.classList.add('active');
+}
+
+// Mobile nav
+function toggleMobileNav() {
+  var overlay = document.getElementById('mobileNav');
+  var hamburger = document.querySelector('.nav-hamburger');
+  overlay.classList.toggle('open');
+  hamburger.classList.toggle('active');
+  document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+}
+
+function closeMobileNav() {
+  var overlay = document.getElementById('mobileNav');
+  var hamburger = document.querySelector('.nav-hamburger');
+  overlay.classList.remove('open');
+  hamburger.classList.remove('active');
+  document.body.style.overflow = '';
+}
+</script>
+
+</body>
+</html>
