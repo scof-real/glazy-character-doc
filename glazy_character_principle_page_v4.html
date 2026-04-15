@@ -72,23 +72,6 @@ nav {
 }
 .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .nav-logo img { height: 56px; width: auto; }
-.nav-brand-home {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  color: var(--white-muted);
-  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease), background var(--duration) var(--ease);
-}
-.nav-brand-home:hover {
-  color: var(--purple-soft);
-  border-color: rgba(139,92,246,0.35);
-  background: rgba(139,92,246,0.08);
-}
-.nav-brand-home svg { display: block; }
 .nav-logo-text {
   font-family: var(--display);
   font-size: 16px;
@@ -243,17 +226,9 @@ nav {
   font-weight: 400;
   color: var(--white-dim);
   max-width: 420px;
-  margin-bottom: 16px;
+  margin-bottom: 28px;
   line-height: 1.75;
 }
-.hero-product-line {
-  font-size: 13px;
-  line-height: 1.65;
-  color: var(--white-muted);
-  max-width: 480px;
-  margin-bottom: 32px;
-}
-.hero-product-line strong { color: var(--white-dim); font-weight: 600; }
 .hero-quote {
   font-family: var(--mono);
   font-size: 12px;
@@ -332,6 +307,15 @@ section { padding: 96px 56px; }
 }
 .id-card-text strong { color: var(--white); font-weight: 600; }
 
+.identity-lead {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--white-dim);
+  max-width: 720px;
+  margin-top: -28px;
+  margin-bottom: 48px;
+}
+
 /* PILLARS */
 .pillars-row {
   display: grid;
@@ -378,6 +362,18 @@ section { padding: 96px 56px; }
   font-size: 13px;
   line-height: 1.65;
   color: var(--white-muted);
+}
+.pillar-anchor {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--white-muted);
+}
+.pillar-anchor strong {
+  color: var(--purple-soft);
+  font-weight: 600;
 }
 
 /* ══════════════════════════════════════════════
@@ -525,6 +521,53 @@ section { padding: 96px 56px; }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 10px;
+}
+/* Identity 02–05: 2×2 tray so wide viewports don’t read as four thin strips */
+.compact-grid.compact-grid--quad {
+  grid-template-columns: 1fr;
+  gap: 14px;
+  padding: 22px 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(17, 17, 17, 0.55);
+  margin-top: 4px;
+}
+@media (min-width: 900px) {
+  .compact-grid.compact-grid--quad {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.compact-grid.compact-grid--quad .p-card {
+  min-height: 148px;
+  padding: 26px 22px;
+}
+
+/* Motion / Emotion: editorial + cards side-by-side on wide screens */
+.principle-split {
+  display: block;
+}
+@media (min-width: 1024px) {
+  .principle-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+    gap: 28px 36px;
+    align-items: start;
+  }
+  .principle-split-main .editorial-block {
+    padding-bottom: 20px;
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+  .principle-split-main .editorial-title {
+    max-width: none;
+  }
+  .principle-split-main .editorial-desc {
+    max-width: none;
+  }
+  .principle-split-aside .compact-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 }
 .p-card {
   background: var(--surface);
@@ -711,8 +754,64 @@ section { padding: 96px 56px; }
   color: var(--purple-soft);
   word-break: break-all;
 }
+.assets-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 20px;
+  margin: -12px 0 36px;
+  width: 100%;
+}
+.assets-controls .asset-tabs {
+  margin-bottom: 0;
+  justify-content: flex-start;
+}
+.assets-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(139,92,246,0.45);
+  color: var(--purple-pale);
+  background: rgba(139,92,246,0.12);
+  transition: border-color var(--duration) var(--ease), background var(--duration) var(--ease), color var(--duration) var(--ease);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.assets-download-btn:hover {
+  border-color: var(--purple-soft);
+  background: rgba(139,92,246,0.22);
+  color: var(--white);
+}
 .asset-tabs {
   display: flex; gap: 8px; margin-bottom: 36px; flex-wrap: wrap;
+}
+.aux-images-grid.aux-grid-key-pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.aux-images-grid.aux-source-plates {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 900px) {
+  .aux-images-grid.aux-grid-key-pair {
+    grid-template-columns: 1fr;
+  }
+  .aux-images-grid.aux-source-plates {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 520px) {
+  .aux-images-grid.aux-source-plates {
+    grid-template-columns: 1fr;
+  }
 }
 .tab-btn {
   font-family: var(--mono);
@@ -911,6 +1010,47 @@ section { padding: 96px 56px; }
   margin-bottom: 36px;
 }
 .d0-intro strong { color: var(--white); font-weight: 600; }
+.product-narrative {
+  max-width: 720px;
+  margin-bottom: 36px;
+}
+.product-anchor {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  line-height: 1.65;
+  color: var(--purple-pale);
+  max-width: 680px;
+  margin-bottom: 16px;
+  opacity: 0.92;
+}
+.product-byline {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--white-muted);
+  max-width: 680px;
+}
+.product-byline strong { color: var(--white-dim); font-weight: 600; }
+.product-triad {
+  max-width: 720px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.product-triad-item {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--white-dim);
+  padding-left: 18px;
+  border-left: 2px solid rgba(139, 92, 246, 0.45);
+}
+.product-triad-item strong { color: var(--white); font-weight: 600; }
+.product-triad-item em {
+  font-style: normal;
+  color: var(--white-muted);
+  font-size: 14px;
+}
 .d0-grid {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
@@ -1001,7 +1141,7 @@ footer {
   display: flex; align-items: center; justify-content: space-between;
 }
 .footer-logo { display: flex; align-items: center; gap: 8px; }
-.footer-logo img { height: 22px; opacity: 0.4; }
+.footer-logo img { height: 36px; width: auto; opacity: 0.45; }
 .footer-logo-text {
   font-family: var(--display);
   font-size: 14px;
@@ -1036,7 +1176,7 @@ footer {
   .hero-banner-bg img { object-position: center center; }
   section { padding: 64px 24px; }
   .id-cards, .pillars-row { grid-template-columns: 1fr 1fr; }
-  .compact-grid { grid-template-columns: 1fr 1fr; }
+  .compact-grid:not(.compact-grid--quad) { grid-template-columns: 1fr 1fr; }
   .visual-top-row { grid-template-columns: 1fr; }
   .d0-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; gap: 16px; padding: 32px 24px; text-align: center; }
@@ -1044,6 +1184,12 @@ footer {
 
 @media (max-width: 768px) {
   /* Hamburger nav */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
   .nav-links { display: none; }
   .nav-hamburger { display: block; }
 
@@ -1086,6 +1232,16 @@ footer {
 @media (max-width: 480px) {
   .aux-images-grid { grid-template-columns: 1fr; }
   .hero-name { font-size: 56px; }
+
+  .assets-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .assets-controls .asset-tabs { justify-content: flex-start; }
+  .assets-controls .assets-download-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 </style>
 </head>
@@ -1096,11 +1252,6 @@ footer {
   <div class="nav-leading">
     <a href="#" class="nav-logo">
       <img src="Donut Logo Color.png" alt="Donut Logo">
-    </a>
-    <a href="https://getdonut.ai/" class="nav-brand-home" target="_blank" rel="noopener noreferrer" aria-label="Donut — visit getdonut.ai">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4M14 4h6m0 0v6m0-6L10 14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
     </a>
   </div>
   <ul class="nav-links">
@@ -1138,7 +1289,6 @@ footer {
     <div class="hero-eyebrow">Donut · D0 Agent · Character System</div>
     <h1 class="hero-name">Glazy</h1>
     <p class="hero-desc">The personified intelligence of D0 — a proactive trading pilot defined by supreme calm, systems-level cognition, and zero tolerance for noise.</p>
-    <p class="hero-product-line"><strong>Donut</strong> is agentic trading for every market. <strong>D0 Agent</strong> monitors, analyzes, recommends, and executes on your behalf within the boundaries you set. Glazy makes that proactive system legible and trustworthy.</p>
     <div class="hero-quote">
       "She reads the entire market structure while others chase the move.<br>
       Her silence is not absence — it is the weight of certainty."
@@ -1150,15 +1300,16 @@ footer {
 <section id="overview" class="identity-section">
   <div class="s-tag">Overview · At a glance</div>
   <h2 class="s-title">Who Glazy Is</h2>
+  <p class="identity-lead">Glazy is the personified outward expression of D0. D0 monitors the market, judges signals, and manages positions — Glazy is the human-perceivable, trust-building face of that system.</p>
 
   <div class="id-cards">
     <div class="id-card">
       <div class="id-card-label">Core Definition</div>
-      <div class="id-card-text"><strong>Proactive &amp; Intelligent Trading Pilot.</strong> The human face of D0's machine cognition. She doesn't explain herself. She executes.</div>
+      <div class="id-card-text"><strong>Proactive &amp; Intelligent Trading Pilot.</strong> The human-readable face of D0 — not a separate operator outsourcing work, but the same stack made legible. She doesn't explain herself. She executes.</div>
     </div>
     <div class="id-card">
       <div class="id-card-label">Archetype</div>
-      <div class="id-card-text">The <strong>quiet minority winner</strong> in a high-volatility world. The girl who lives her life while D0 guards her strategy — and never looks worried.</div>
+      <div class="id-card-text">The <strong>quiet minority winner</strong> in a high-volatility world. She looks unbothered because the engine beneath her is already computing — calm as evidence of a system that decided before the crowd reacted.</div>
     </div>
     <div class="id-card">
       <div class="id-card-label">Her Opposite</div>
@@ -1177,24 +1328,28 @@ footer {
       <div class="pillar-num">P — 01</div>
       <div class="pillar-title">Extreme Calm</div>
       <div class="pillar-desc">Markets crash. Screens flash. Others spiral. She doesn't. Rationality always outranks emotion — and it shows in every frame.</div>
+      <div class="pillar-anchor"><strong>D0 risk anchor:</strong> When markets swing violently, the system holds steady.</div>
     </div>
     <div class="pillar">
       <div class="pillar-glow" style="background: linear-gradient(90deg, #7B61FF, transparent)"></div>
       <div class="pillar-num">P — 02</div>
       <div class="pillar-title">Systems Intelligence</div>
       <div class="pillar-desc">She sees volume, funding, momentum, risk, sizing, and exit — simultaneously. The full causal chain at once, not just a signal.</div>
+      <div class="pillar-anchor"><strong>D0 proactive monitoring:</strong> She isn't watching a signal — she's reading the full causal chain.</div>
     </div>
     <div class="pillar">
       <div class="pillar-glow" style="background: linear-gradient(90deg, #5B3A8A, transparent)"></div>
       <div class="pillar-num">P — 03</div>
       <div class="pillar-title">Zero Redundancy</div>
       <div class="pillar-desc">One touch. One look. One decision. Every action lands on first attempt. She never repeats herself — in motion or in speech.</div>
+      <div class="pillar-anchor"><strong>D0 execution:</strong> One judgment, one order — no hesitation.</div>
     </div>
     <div class="pillar">
       <div class="pillar-glow" style="background: linear-gradient(90deg, #C4A9F0, transparent)"></div>
       <div class="pillar-num">P — 04</div>
       <div class="pillar-title">High-Altitude View</div>
       <div class="pillar-desc">She stands above the system, reading the whole board. The market moves for her — she doesn't move for the market.</div>
+      <div class="pillar-anchor"><strong>D0 full-market coverage:</strong> Others fixate on one symbol; she reads the liquidity structure across the board.</div>
     </div>
   </div>
 </section>
@@ -1203,7 +1358,15 @@ footer {
 <section id="product" class="d0-section">
   <div class="s-tag">Product</div>
   <h2 class="s-title">Glazy, D0, and Donut</h2>
-  <p class="d0-intro"><strong>Donut</strong> is the parent brand for agentic trading across markets. <strong>D0 Agent</strong> is the product surface users interact with: proactive monitoring, judgment, and execution within your authorization. <strong>Glazy</strong> is the human-readable face of that system—designed so character appeal always reinforces product trust, not the other way around.</p>
+  <div class="product-narrative">
+    <p class="product-anchor">Her stillness is the system working. Monitoring. Judging. Executing.</p>
+    <p class="product-byline"><strong>Donut</strong> is agentic trading for every market. <strong>D0 Agent</strong> monitors, analyzes, recommends, and executes on your behalf within the boundaries you set. Glazy makes that proactive system legible and trustworthy.</p>
+  </div>
+  <div class="product-triad">
+    <p class="product-triad-item"><strong>Donut</strong> — the parent brand. <em>Agentic Trading for Every Market.</em></p>
+    <p class="product-triad-item"><strong>D0</strong> — Donut's AI trader entry point. It monitors the market, judges signals, executes trades, and enforces risk controls.</p>
+    <p class="product-triad-item"><strong>Glazy</strong> — D0's personified expression. Users remember her — and remember what D0 is built to do.</p>
+  </div>
 
   <div class="d0-grid">
     <div class="d0-diagram">
@@ -1257,8 +1420,7 @@ footer {
 
   <div class="principles-header">
     <div class="principles-lead">
-      These 20 principles govern every piece of content Glazy appears in — from a 6-second clip to a brand campaign.
-      <strong>They are non-negotiable.</strong> When in doubt: would a precision instrument do this?
+      These twenty principles are the compass whenever we put Glazy in the world—the few things that matter most for keeping her consistent, without turning every brief into a rulebook.
     </div>
     <div class="principles-index">
       <span>IDENTITY &amp; VOICE</span> · 01–09<br>
@@ -1281,7 +1443,7 @@ footer {
       <div class="editorial-desc">Every ounce of her charm must flow back to product trust — not character fandom. She exists to make D0 credible, not to be a collectible.</div>
     </div>
 
-    <div class="compact-grid">
+    <div class="compact-grid compact-grid--quad">
       <div class="p-card">
         <div class="p-card-top"><span class="p-num">02</span><span class="p-cat">Identity</span></div>
         <div class="p-title">She never explains herself.</div>
@@ -1411,22 +1573,27 @@ footer {
       <div class="cat-label-text">Motion · 15–17</div>
     </div>
 
-    <div class="editorial-block">
-      <div class="editorial-num">15</div>
-      <div class="editorial-title">Every action lands first attempt. No hesitation.</div>
-      <div class="editorial-desc">A tap, a head turn, a glance — each happens once, decisively, and completes. Repeated movement breaks character. She is a precision instrument, not an organic impulse.</div>
-    </div>
-
-    <div class="compact-grid">
-      <div class="p-card">
-        <div class="p-card-top"><span class="p-num">16</span><span class="p-cat">Motion</span></div>
-        <div class="p-title">Breath pauses on head turns and eye raises.</div>
-        <div class="p-desc">Movement arrives with a micro-pause, as if loading precision before completing. This gives the "precision instrument" feel.</div>
+    <div class="principle-split">
+      <div class="principle-split-main">
+        <div class="editorial-block">
+          <div class="editorial-num">15</div>
+          <div class="editorial-title">Every action lands first attempt. No hesitation.</div>
+          <div class="editorial-desc">A tap, a head turn, a glance — each happens once, decisively, and completes. Repeated movement breaks character. She is a precision instrument, not an organic impulse.</div>
+        </div>
       </div>
-      <div class="p-card">
-        <div class="p-card-top"><span class="p-num">17</span><span class="p-cat">Motion</span></div>
-        <div class="p-title">Low frame rate signals mechanical intelligence.</div>
-        <div class="p-desc">8–12fps in animation is not a budget constraint — it's deliberate. She moves like precise machinery, not organic impulse.</div>
+      <div class="principle-split-aside">
+        <div class="compact-grid">
+          <div class="p-card">
+            <div class="p-card-top"><span class="p-num">16</span><span class="p-cat">Motion</span></div>
+            <div class="p-title">Breath pauses on head turns and eye raises.</div>
+            <div class="p-desc">Movement arrives with a micro-pause, as if loading precision before completing. This gives the "precision instrument" feel.</div>
+          </div>
+          <div class="p-card">
+            <div class="p-card-top"><span class="p-num">17</span><span class="p-cat">Motion</span></div>
+            <div class="p-title">Low frame rate signals mechanical intelligence.</div>
+            <div class="p-desc">8–12fps in animation is not a budget constraint — it's deliberate. She moves like precise machinery, not organic impulse.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1438,22 +1605,27 @@ footer {
       <div class="cat-label-text">Emotion · 18–20</div>
     </div>
 
-    <div class="editorial-block">
-      <div class="editorial-num">18</div>
-      <div class="editorial-title">She has emotions — compressed behind judgment.</div>
-      <div class="editorial-desc">Glazy is not cold by emptiness. She feels — but only after the decision is complete. Reverse this order and she becomes weak. The compression is the character.</div>
-    </div>
-
-    <div class="compact-grid">
-      <div class="p-card">
-        <div class="p-card-top"><span class="p-num">19</span><span class="p-cat">Emotion</span></div>
-        <div class="p-title">Her protection is anticipation, not comfort.</div>
-        <div class="p-desc">She doesn't soothe — she prevents. She sees risk before it arrives. Her care language: "already handled."</div>
+    <div class="principle-split">
+      <div class="principle-split-main">
+        <div class="editorial-block">
+          <div class="editorial-num">18</div>
+          <div class="editorial-title">She has emotions — compressed behind judgment.</div>
+          <div class="editorial-desc">Glazy is not cold by emptiness. She feels — but only after the decision is complete. Reverse this order and she becomes weak. The compression is the character.</div>
+        </div>
       </div>
-      <div class="p-card">
-        <div class="p-card-top"><span class="p-num">20</span><span class="p-cat">Emotion</span></div>
-        <div class="p-title">The contrast IS the character: built as a tool, understands more than humans.</div>
-        <div class="p-desc">Never resolve the tension between "designed instrument" and "surpassing human comprehension." It's the source of her appeal.</div>
+      <div class="principle-split-aside">
+        <div class="compact-grid">
+          <div class="p-card">
+            <div class="p-card-top"><span class="p-num">19</span><span class="p-cat">Emotion</span></div>
+            <div class="p-title">Her protection is anticipation, not comfort.</div>
+            <div class="p-desc">She doesn't soothe — she prevents. She sees risk before it arrives. Her care language: "already handled."</div>
+          </div>
+          <div class="p-card">
+            <div class="p-card-top"><span class="p-num">20</span><span class="p-cat">Emotion</span></div>
+            <div class="p-title">The contrast IS the character: built as a tool, understands more than humans.</div>
+            <div class="p-desc">Never resolve the tension between "designed instrument" and "surpassing human comprehension." It's the source of her appeal.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1461,19 +1633,22 @@ footer {
 
 </section>
 
-<!-- ASSET GALLERY — three lanes (Community / X Branding / Live beta) -->
+<!-- ASSET GALLERY — three lanes (X Branding / Community / Live beta) -->
 <section id="assets" class="assets-section">
   <div class="s-tag">Assets</div>
   <h2 class="s-title">Visual system · three lanes</h2>
 
-  <div class="asset-tabs">
-    <button type="button" class="tab-btn active" onclick="showAssets('community', this)">Community</button>
-    <button type="button" class="tab-btn" onclick="showAssets('xbrand', this)">X Branding</button>
-    <button type="button" class="tab-btn" onclick="showAssets('livebeta', this)">Live (beta)</button>
+  <div class="assets-controls">
+    <div class="asset-tabs">
+      <button type="button" class="tab-btn active" onclick="showAssets('xbrand', this)">X Branding</button>
+      <button type="button" class="tab-btn" onclick="showAssets('community', this)">Community</button>
+      <button type="button" class="tab-btn" onclick="showAssets('livebeta', this)">Live (beta)</button>
+    </div>
+    <a href="glazy-assets-bundle.zip" class="assets-download-btn" download="glazy-assets-bundle.zip">Download assets (ZIP)</a>
   </div>
 
   <!-- COMMUNITY · Chibi -->
-  <div id="gallery-community" class="asset-gallery active">
+  <div id="gallery-community" class="asset-gallery">
     <p class="assets-tab-lead">Chibi style — cute variants for community and social moments. Grid auto-fills as you add or remove PNGs in <code>Chibi Style/</code>.</p>
     <div class="gallery-section-label">Chibi Style</div>
     <div class="aux-images-grid">
@@ -1491,16 +1666,28 @@ footer {
   </div>
 
   <!-- X BRANDING · Standard + Gemini -->
-  <div id="gallery-xbrand" class="asset-gallery">
-    <p class="assets-tab-lead">Adult cartoon variants for X and brand comms: primary standard key art, then Gemini Nanobanana explorations.</p>
-    <div class="gallery-section-label">Standard mascot</div>
-    <div class="aux-images-grid">
-      <div class="aux-image-card aux-span-full">
+  <div id="gallery-xbrand" class="asset-gallery active">
+    <div class="gallery-section-label">Key art &amp; concept breakdown</div>
+    <div class="aux-images-grid aux-grid-key-pair">
+      <div class="aux-image-card">
         <div class="aux-image-media" style="aspect-ratio: 16 / 10; max-height: min(70vh, 560px);">
           <img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Standard%20Mascot%20girl/standard_donutgirl.jpg" alt="Standard Donut mascot" onerror="assetImgOnError(this)">
         </div>
         <div class="img-label">Standard mascot · key art</div>
       </div>
+      <div class="aux-image-card">
+        <div class="aux-image-media" style="aspect-ratio: 16 / 10; max-height: min(70vh, 560px);">
+          <img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Glazy%20breakdown.jpg" alt="Glazy character concept breakdown sheet" onerror="assetImgOnError(this)">
+        </div>
+        <div class="img-label">Character concept breakdown</div>
+      </div>
+    </div>
+    <div class="gallery-section-label">Source plates</div>
+    <div class="aux-images-grid aux-source-plates">
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source1.png" alt="Glazy pose sheet 1" onerror="assetImgOnError(this)"></div><div class="img-label">Source plate 1</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source2.png" alt="Glazy pose sheet 2" onerror="assetImgOnError(this)"></div><div class="img-label">Source plate 2</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source3.png" alt="Glazy pose sheet 3" onerror="assetImgOnError(this)"></div><div class="img-label">Source plate 3</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source4.png" alt="Glazy pose sheet 4" onerror="assetImgOnError(this)"></div><div class="img-label">Source plate 4</div></div>
     </div>
     <div class="gallery-divider"></div>
     <div class="gallery-section-label">Gemini Nanobanana</div>
