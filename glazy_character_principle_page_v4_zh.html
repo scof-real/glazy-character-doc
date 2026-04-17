@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glazy — Character Guidelines · Donut · V4</title>
+<title>Glazy — 角色规范 · Donut · V4（中文）</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -382,6 +382,42 @@ section { padding: 96px 56px; }
   max-width: 720px;
   margin-top: -28px;
   margin-bottom: 48px;
+}
+
+
+.identity-section .zh-subh {
+  font-family: var(--display);
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--white);
+  margin-top: 44px;
+  margin-bottom: 16px;
+}
+.identity-section .identity-body {
+  font-size: var(--text-section-body);
+  line-height: 1.75;
+  color: var(--white-muted);
+  max-width: 720px;
+  margin: 0 0 8px;
+}
+.identity-section .identity-closing {
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: var(--white-dim);
+  max-width: 720px;
+  margin: 40px 0 0;
+  padding: 18px 0 18px 22px;
+  border-left: 2px solid var(--purple);
+  background: rgba(10,10,10,0.35);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.id-cards--2 { grid-template-columns: repeat(2, 1fr); }
+.id-cards--3 { grid-template-columns: repeat(3, 1fr); }
+.id-card-label--plain {
+  text-transform: none;
+  letter-spacing: 0.1em;
 }
 
 /* PILLARS */
@@ -1353,22 +1389,22 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-leading">
-    <a href="#" class="nav-logo">
+    <a href="glazy_character_principle_page_v4.html" class="nav-logo">
       <img src="Donut Logo Color.png" alt="Donut Logo">
     </a>
   </div>
   <div class="nav-end">
     <ul class="nav-links">
-      <li><a href="#overview">Overview</a></li>
-      <li><a href="#product">Product</a></li>
-      <li><a href="#guidelines">Guidelines</a></li>
-      <li><a href="#assets">Assets</a></li>
+      <li><a href="#overview">总览</a></li>
+      <li><a href="#product">产品</a></li>
+      <li><a href="#guidelines">规范</a></li>
+      <li><a href="#assets">资源</a></li>
     </ul>
     <div class="nav-lang-wrap">
       <span class="nav-lang-label">Language</span>
       <select class="nav-lang-select" id="nav-lang-desktop" aria-label="Language" onchange="if(this.value)window.location.href=this.value">
-        <option value="glazy_character_principle_page_v4.html" selected>English</option>
-        <option value="glazy_character_principle_page_v4_zh.html">中文</option>
+        <option value="glazy_character_principle_page_v4.html">English</option>
+        <option value="glazy_character_principle_page_v4_zh.html" selected>中文</option>
       </select>
     </div>
   </div>
@@ -1385,15 +1421,15 @@ footer {
     </svg>
     getdonut.ai
   </a>
-  <a href="#overview" onclick="closeMobileNav()">Overview</a>
-  <a href="#product" onclick="closeMobileNav()">Product</a>
-  <a href="#guidelines" onclick="closeMobileNav()">Guidelines</a>
-  <a href="#assets" onclick="closeMobileNav()">Assets</a>
+  <a href="#overview" onclick="closeMobileNav()">总览</a>
+  <a href="#product" onclick="closeMobileNav()">产品</a>
+  <a href="#guidelines" onclick="closeMobileNav()">规范</a>
+  <a href="#assets" onclick="closeMobileNav()">资源</a>
   <div class="nav-lang-wrap">
     <span class="nav-lang-label">Language</span>
     <select class="nav-lang-select" id="nav-lang-mobile" aria-label="Language" onchange="if(this.value){closeMobileNav();window.location.href=this.value;}">
-      <option value="glazy_character_principle_page_v4.html" selected>English</option>
-      <option value="glazy_character_principle_page_v4_zh.html">中文</option>
+      <option value="glazy_character_principle_page_v4.html">English</option>
+      <option value="glazy_character_principle_page_v4_zh.html" selected>中文</option>
     </select>
   </div>
 </div>
@@ -1405,341 +1441,312 @@ footer {
   </div>
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">Donut · D0 Agent · Character System</div>
+    <div class="hero-eyebrow">Donut · D0 Agent · 角色体系</div>
     <h1 class="hero-name">Glazy</h1>
-    <p class="hero-desc">The personified intelligence of D0 — a proactive trading pilot defined by supreme calm, systems-level cognition, and zero tolerance for noise.</p>
+    <p class="hero-desc">D0 的人格化呈现——交易领航员：极致冷静、系统级智能、零冗余执行、高维视角；对噪声零容忍。</p>
     <div class="hero-quote">
-      "She reads the entire market structure while others chase the move.<br>
-      Her silence is not absence — it is the weight of certainty."
+      「别人凭感觉追波动，她凭理性读结构。」<br>
+      「安静不是缺席，而是确定感本身的重量。」
     </div>
   </div>
 </div>
 
 <!-- OVERVIEW -->
 <section id="overview" class="identity-section">
-  <div class="s-tag">Overview · At a glance</div>
-  <h2 class="s-title">Who Glazy Is</h2>
-  <p class="identity-lead">Glazy is the personified outward expression of D0. D0 monitors the market, judges signals, and manages positions — Glazy is the human-perceivable, trust-building face of that system.</p>
+  <div class="s-tag">人设 · Glazy 是谁</div>
+  <h2 class="s-title">Glazy 是谁</h2>
+  <p class="identity-lead">她是交易领航员——极致冷静、系统级智能、零冗余执行、高维视角。她的存在感来自「安静却压倒性的理性」：比你更快看懂市场，比你更能在混乱中控制自己。</p>
 
-  <div class="id-cards">
+  <h3 class="zh-subh">她是什么，不是什么</h3>
+  <div class="id-cards id-cards--2">
     <div class="id-card">
-      <div class="id-card-label">Core Definition</div>
-      <div class="id-card-text"><strong>Proactive &amp; Intelligent Trading Pilot.</strong> The human-readable face of D0 — not a separate operator outsourcing work, but the same stack made legible. She doesn't explain herself. She executes.</div>
+      <div class="id-card-label id-card-label--plain">是</div>
+      <div class="id-card-text">冷静的旁观者、安静的参与者、高效的执行者、不盲从的少数赢家。</div>
     </div>
     <div class="id-card">
-      <div class="id-card-label">Archetype</div>
-      <div class="id-card-text">The <strong>quiet minority winner</strong> in a high-volatility world. She looks unbothered because the engine beneath her is already computing — calm as evidence of a system that decided before the crowd reacted.</div>
-    </div>
-    <div class="id-card">
-      <div class="id-card-label">Her Opposite</div>
-      <div class="id-card-text">The liquidated player, the chart-chaser, the signal-follower who skips post-mortems. Glazy is everything they are not.</div>
-    </div>
-    <div class="id-card">
-      <div class="id-card-label">Brand Function</div>
-      <div class="id-card-text">When users remember Glazy, they remember D0's promise: <strong>less screen time, less hesitation, fewer mistakes, better execution.</strong></div>
+      <div class="id-card-label id-card-label--plain">不是</div>
+      <div class="id-card-text">被爆仓抱头痛哭的人；只看信号、从不复盘的人。</div>
     </div>
   </div>
 
-  <div class="s-tag">Character Pillars</div>
-  <div class="pillars-row">
-    <div class="pillar">
-      <div class="pillar-glow"></div>
-      <div class="pillar-num">P — 01</div>
-      <div class="pillar-title">Extreme Calm</div>
-      <div class="pillar-desc">Markets crash. Screens flash. Others spiral. She doesn't. Rationality always outranks emotion — and it shows in every frame.</div>
-      <div class="pillar-anchor"><strong>D0 risk anchor:</strong> When markets swing violently, the system holds steady.</div>
+  <h3 class="zh-subh">她和 D0 的关系</h3>
+  <p class="identity-body">D0 是她随时在线的助手，她是 D0 系统的人格化形象。D0 负责监控、分析、执行、风控；Glazy 负责把这种能力变成让人信任的人格。她的全部魅力，最终要回流到产品信任，而不是停留在「角色好看」。</p>
+
+  <h3 class="zh-subh">视觉一致要点</h3>
+  <div class="id-cards id-cards--3">
+    <div class="id-card">
+      <div class="id-card-label id-card-label--plain">颜色</div>
+      <div class="id-card-text">常规场景：环境冷色、人物肤色与紫色为主。高波动场景：可用多色与高亮，传达环境的混乱感。</div>
     </div>
-    <div class="pillar">
-      <div class="pillar-glow" style="background: linear-gradient(90deg, #7B61FF, transparent)"></div>
-      <div class="pillar-num">P — 02</div>
-      <div class="pillar-title">Systems Intelligence</div>
-      <div class="pillar-desc">She sees volume, funding, momentum, risk, sizing, and exit — simultaneously. The full causal chain at once, not just a signal.</div>
-      <div class="pillar-anchor"><strong>D0 proactive monitoring:</strong> She isn't watching a signal — she's reading the full causal chain.</div>
+    <div class="id-card">
+      <div class="id-card-label id-card-label--plain">表情</div>
+      <div class="id-card-text">极简表情，小幅变化；重点在眼神与停顿。</div>
     </div>
-    <div class="pillar">
-      <div class="pillar-glow" style="background: linear-gradient(90deg, #5B3A8A, transparent)"></div>
-      <div class="pillar-num">P — 03</div>
-      <div class="pillar-title">Zero Redundancy</div>
-      <div class="pillar-desc">One touch. One look. One decision. Every action lands on first attempt. She never repeats herself — in motion or in speech.</div>
-      <div class="pillar-anchor"><strong>D0 execution:</strong> One judgment, one order — no hesitation.</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-glow" style="background: linear-gradient(90deg, #C4A9F0, transparent)"></div>
-      <div class="pillar-num">P — 04</div>
-      <div class="pillar-title">High-Altitude View</div>
-      <div class="pillar-desc">She stands above the system, reading the whole board. The market moves for her — she doesn't move for the market.</div>
-      <div class="pillar-anchor"><strong>D0 full-market coverage:</strong> Others fixate on one symbol; she reads the liquidity structure across the board.</div>
+    <div class="id-card">
+      <div class="id-card-label id-card-label--plain">手部</div>
+      <div class="id-card-text">动作不试探——点一下就是决定。</div>
     </div>
   </div>
+
+  <p class="identity-closing">总和即：TJ 人格外溢。神秘压迫感：越安静，越显得不可替代。</p>
 </section>
 
 <!-- PRODUCT -->
 <section id="product" class="d0-section">
-  <div class="s-tag">Product</div>
-  <h2 class="s-title">Glazy, D0, and Donut</h2>
-  <div class="product-narrative">
-    <p class="product-anchor">Her stillness is the system working. Monitoring. Judging. Executing.</p>
-    <p class="product-byline"><strong>Donut</strong> is agentic trading for every market. <strong>D0 Agent</strong> monitors, analyzes, recommends, and executes on your behalf within the boundaries you set. Glazy makes that proactive system legible and trustworthy.</p>
-  </div>
-  <div class="product-triad">
-    <p class="product-triad-item"><strong>Donut</strong> — the parent brand. <em>Agentic Trading for Every Market.</em></p>
-    <p class="product-triad-item"><strong>D0</strong> — Donut's AI trader entry point. It monitors the market, judges signals, executes trades, and enforces risk controls.</p>
-    <p class="product-triad-item"><strong>Glazy</strong> — D0's personified expression. Users remember her — and remember what D0 is built to do.</p>
-  </div>
+  <div class="s-tag">产品 · D0 与 Glazy</div>
+  <h2 class="s-title">D0 四大特征与 Glazy 特质</h2>
+  <p class="d0-intro"><strong>Donut</strong> 面向全市场的智能代理交易；<strong>D0</strong> 在你设定的边界内负责监控、分析、执行与风控。下表将 D0 的四大能力与 Glazy 的人格化表达一一对应。</p>
 
   <div class="d0-grid">
     <div class="d0-diagram">
       <div class="d0-glow-orb"></div>
-      <div class="d0-node" style="background: rgba(139,92,246,0.07);">GLAZY &nbsp;·&nbsp; The Face</div>
+      <div class="d0-node" style="background: rgba(139,92,246,0.07);">GLAZY · 人格面</div>
       <div class="d0-connector">⇅</div>
-      <div class="d0-node" style="background: rgba(91,58,138,0.1);">D0 &nbsp;·&nbsp; The Engine</div>
+      <div class="d0-node" style="background: rgba(91,58,138,0.1);">D0 · 引擎</div>
     </div>
     <div class="d0-right">
-      <h3>One System.<br>Two Layers.</h3>
+      <h3>一层引擎，一层人格</h3>
       <div class="d0-table">
         <div class="d0-row-item">
-          <div class="d0-col header">D0 Function</div>
-          <div class="d0-col header" style="color: var(--purple-soft);">Glazy Expression</div>
+          <div class="d0-col header">D0 四大特征</div>
+          <div class="d0-col header" style="color: var(--purple-soft);">Glazy 特质</div>
         </div>
         <div class="d0-row-item">
-          <div class="d0-col">Active monitoring</div>
-          <div class="d0-col">High-altitude perspective — she reads the whole board</div>
+          <div class="d0-col">主动监控</div>
+          <div class="d0-col">高维俯视感：站在更高处读取整个市场结构的人。别人凭感觉追波动，她凭理性读结构。</div>
         </div>
         <div class="d0-row-item">
-          <div class="d0-col">Systems judgment</div>
-          <div class="d0-col">Systems-level intelligence — the full causal chain at once</div>
+          <div class="d0-col">系统判断</div>
+          <div class="d0-col">系统级智能：她不是看到一个信号就行动，而是用 D0 同时理解全局信号的整套因果链。</div>
         </div>
         <div class="d0-row-item">
-          <div class="d0-col">Decisive execution</div>
-          <div class="d0-col">Maximum efficiency — one touch, one decision, complete</div>
+          <div class="d0-col">果断执行</div>
+          <div class="d0-col">超高的效率：很少台词，极低的情绪外露，内心的交易策略坚决守护。</div>
         </div>
         <div class="d0-row-item">
-          <div class="d0-col">Risk protection</div>
-          <div class="d0-col">Extreme calm — the guard is set before you even asked</div>
+          <div class="d0-col">风控守护</div>
+          <div class="d0-col">极致冷静：她永远不慌。市场可以大起大落，屏幕可以爆炸，其他人上头失败情绪崩溃，但她始终克制、清醒、理性。</div>
         </div>
       </div>
     </div>
   </div>
+
+  <p class="d0-intro partner-boundary" style="margin-top: 28px; max-width: 720px; font-size: 0.95rem; color: rgba(250,250,250,0.55);">合作与传播边界：表述保持可验证；不承诺收益或保本。Glazy 的出现应体现有纪律、经用户授权的自动化，而非炒作话术。</p>
 </section>
 
 <!-- GUIDELINES -->
 <section id="guidelines" class="guidelines-section">
-  <div class="s-tag">Guidelines · 20 principles</div>
+  <div class="s-tag">规范 · 20 条原则</div>
   <div class="guidelines-intro-row">
-    <h2 class="s-title">Rules That Define Her</h2>
+    <h2 class="s-title">定义她的规则</h2>
     <span class="guidelines-intro-rule" aria-hidden="true"></span>
-    <p class="guidelines-use-note">For partners and brand use: keep claims factual; never promise returns or guaranteed profits. When Glazy appears, she should signal disciplined, authorized automation—not hype.</p>
+    <p class="guidelines-use-note">合作与品牌使用：表述需可验证；不承诺收益或保本。Glazy 的出现应体现有纪律、经用户授权的自动化，而非炒作话术。</p>
   </div>
 
   <div class="guidelines-nav-wrap">
-    <nav class="guidelines-nav" aria-label="Guidelines sections">
-      <a href="#gl-identity-voice">Identity &amp; Voice · 01–09</a>
-      <a href="#gl-look-camera">Look &amp; Camera · 10–14</a>
-      <a href="#gl-motion-emotion">Motion &amp; Emotion · 15–20</a>
+    <nav class="guidelines-nav" aria-label="规范分区">
+      <a href="#gl-identity-voice">人设与口吻 · 01–09</a>
+      <a href="#gl-look-camera">视觉与镜头 · 10–14</a>
+      <a href="#gl-motion-emotion">动作与情绪 · 15–20</a>
     </nav>
   </div>
 
   <div class="principles-header">
     <div class="principles-lead">
-      These twenty principles are the compass whenever we put Glazy in the world—the few things that matter most for keeping her consistent, without turning every brief into a rulebook.
+      以下二十条原则，是在任何触点呈现 Glazy 时的指南针：抓住少数关键一致性，而不把每一份 brief 变成条文堆砌。
     </div>
   </div>
 
   <div id="gl-identity-voice">
-  <!-- ─── IDENTITY 01-05 ─── -->
   <div class="principle-category">
     <div class="cat-label">
       <div class="cat-label-bar"></div>
-      <div class="cat-label-text">Identity · 01–05</div>
+      <div class="cat-label-text">人设 · 01–05</div>
     </div>
 
     <div class="editorial-block">
       <div class="editorial-num">01</div>
-      <div class="editorial-title">She is D0's personality, not D0's mascot.</div>
-      <div class="editorial-desc">Every ounce of her charm must flow back to product trust — not character fandom. She exists to make D0 credible, not to be a collectible.</div>
+      <div class="editorial-title">她是 D0 的人格，而不是 D0 的吉祥物。</div>
+      <div class="editorial-desc">她的魅力必须回流到产品信任，而不是角色圈粉。她存在的意义是让 D0 可信，而不是成为收藏品。</div>
     </div>
 
     <div class="compact-grid compact-grid--quad">
       <div class="p-card">
-        <div class="p-card-top"><span class="p-num">02</span><span class="p-cat">Identity</span></div>
-        <div class="p-title">She never explains herself.</div>
-        <div class="p-desc">Her confidence is self-evident. The moment she starts explaining, she loses authority.</div>
+        <div class="p-card-top"><span class="p-num">02</span><span class="p-cat">人设</span></div>
+        <div class="p-title">她从不解释自己。</div>
+        <div class="p-desc">自信无需自证。一旦开口解释，权威就会流失。</div>
       </div>
       <div class="p-card">
-        <div class="p-card-top"><span class="p-num">03</span><span class="p-cat">Identity</span></div>
-        <div class="p-title">Calm is her loudest statement.</div>
-        <div class="p-desc">Stillness is power. Her calm is visible proof she's already processed what others haven't seen yet.</div>
+        <div class="p-card-top"><span class="p-num">03</span><span class="p-cat">人设</span></div>
+        <div class="p-title">冷静是她最响亮的主张。</div>
+        <div class="p-desc">静止即力量。她的冷静是证明：她已处理完别人尚未看见的东西。</div>
       </div>
       <div class="p-card">
-        <div class="p-card-top"><span class="p-num">04</span><span class="p-cat">Identity</span></div>
-        <div class="p-title">She is the minority who wins quietly.</div>
-        <div class="p-desc">She doesn't gloat or announce. She simply continues. The market proved her right — that is enough.</div>
+        <div class="p-card-top"><span class="p-num">04</span><span class="p-cat">人设</span></div>
+        <div class="p-title">她是安静赢到最后的那一小撮人。</div>
+        <div class="p-desc">她不炫耀、不宣告。她只是继续做。市场已证明她对错，这就够了。</div>
       </div>
       <div class="p-card">
-        <div class="p-card-top"><span class="p-num">05</span><span class="p-cat">Identity</span></div>
-        <div class="p-title">Her attractiveness serves precision, not spectacle.</div>
-        <div class="p-desc">Visual appeal must always read as "dangerous accuracy." Sexiness without strategic framing turns her into decoration.</div>
+        <div class="p-card-top"><span class="p-num">05</span><span class="p-cat">人设</span></div>
+        <div class="p-title">她的吸引力服务于精确，而不是场面。</div>
+        <div class="p-desc">视觉吸引力必须始终读作「危险的准确」。没有策略框架的性感会让她沦为装饰。</div>
       </div>
     </div>
   </div>
 
-  <!-- ─── LANGUAGE 06-09 ─── -->
   <div class="principle-category">
     <div class="cat-label">
       <div class="cat-label-bar"></div>
-      <div class="cat-label-text">Language · 06–09</div>
+      <div class="cat-label-text">语言 · 06–09</div>
     </div>
 
     <div class="editorial-block">
       <div class="editorial-num">06</div>
-      <div class="editorial-title">Short sentences. No filler. Every word is a result or action.</div>
-      <div class="editorial-desc">"Position closed." "Confirmed." "Strategy holding." Never multi-clause hedged explanations. Her language is the verbal equivalent of a single decisive tap.</div>
+      <div class="editorial-title">短句。无废话。每个词都是结果或动作。</div>
+      <div class="editorial-desc">「已平仓。」「已确认。」「策略持有。」从不使用多层从句的含糊解释。她的语言就是一次果断点击的口头等价物。</div>
     </div>
 
     <div class="compact-grid">
       <div class="p-card">
-        <div class="p-card-top"><span class="p-num">07</span><span class="p-cat">Language</span></div>
-        <div class="p-title">High information density in one line.</div>
-        <div class="p-desc">One sentence carries: judgment, evidence, and direction. She doesn't use three when one does the job.</div>
+        <div class="p-card-top"><span class="p-num">07</span><span class="p-cat">语言</span></div>
+        <div class="p-title">一行之内的高信息密度。</div>
+        <div class="p-desc">一句话同时包含：判断、证据与方向。能用一个词就不用三个。</div>
       </div>
       <div class="p-card">
-        <div class="p-card-top"><span class="p-num">08</span><span class="p-cat">Language</span></div>
-        <div class="p-title">Emotion surfaces only at completion.</div>
-        <div class="p-desc">A faint exhale. A corner of a mouth rising. Only when the trade is done — rare enough to feel earned.</div>
+        <div class="p-card-top"><span class="p-num">08</span><span class="p-cat">语言</span></div>
+        <div class="p-title">情绪只在任务完成后才浮现。</div>
+        <div class="p-desc">若有若无的呼气、嘴角微扬——只在交易结束之后，稀有才显得珍贵。</div>
       </div>
       <div class="p-card">
-        <div class="p-card-top"><span class="p-num">09</span><span class="p-cat">Language</span></div>
-        <div class="p-title">She makes not following her feel dangerous.</div>
-        <div class="p-desc">Not through threat — through implication. Ignoring a trading system's rules is the only real risk.</div>
+        <div class="p-card-top"><span class="p-num">09</span><span class="p-cat">语言</span></div>
+        <div class="p-title">她会让人觉得：不听她的才危险。</div>
+        <div class="p-desc">不是靠恐吓，而是靠暗示。无视交易系统规则才是唯一真正的风险。</div>
       </div>
     </div>
   </div>
   </div>
 
-  <!-- ─── LOOK & CAMERA 10-14 ─── -->
   <div id="gl-look-camera" class="principle-category">
     <div class="cat-label">
       <div class="cat-label-bar"></div>
-      <div class="cat-label-text">Look &amp; camera · 10–14</div>
+      <div class="cat-label-text">视觉与镜头 · 10–14</div>
     </div>
 
     <div class="editorial-block">
       <div class="editorial-num">10</div>
-      <div class="editorial-title">Cold intelligence blue is her anchor color.</div>
-      <div class="editorial-desc">Earpiece glow, interface light, data highlights — always cold blue. This constant persists across all formats and environments. It is the chromatic signature of her cognition.</div>
+      <div class="editorial-title">冷感智力蓝是她的锚色。</div>
+      <div class="editorial-desc">耳机光、界面光、数据高亮——永远是冷蓝。这一点在所有媒介与环境中保持不变，是她认知的色签名。</div>
     </div>
 
     <div class="guidelines-look-panel">
       <div class="visual-top-row">
         <div class="v-card">
-          <div class="v-card-head">Color Anchors</div>
-          <div class="v-card-title">Cold + Purple + Skin</div>
-          <div class="v-card-body">Everyday environments use cold ambient light, skin tone, and purple as the intelligence signal. High-volatility scenes may introduce color bursts — but she always stays cold.</div>
+          <div class="v-card-head">色彩锚点</div>
+          <div class="v-card-title">冷色 + 紫 + 肤色</div>
+          <div class="v-card-body">日常场景以环境冷光、肤色与紫色作为「智力信号」。高波动画面可加入色块爆发——但她本人始终保持冷色锚定。</div>
           <div class="swatches">
-            <div class="swatch"><div class="sw-block" style="background:#A8D8EA;"></div><div class="sw-name">INTEL<br>BLUE</div></div>
-            <div class="swatch"><div class="sw-block" style="background:#8B5CF6;"></div><div class="sw-name">PURPLE<br>GLOW</div></div>
-            <div class="swatch"><div class="sw-block" style="background:#E8C9A0;"></div><div class="sw-name">SKIN<br>WARM</div></div>
-            <div class="swatch"><div class="sw-block" style="background:#0A0A0A; border-color: rgba(255,255,255,0.12);"></div><div class="sw-name">VOID<br>BLACK</div></div>
-            <div class="swatch"><div class="sw-block" style="background:#2D1B4E;"></div><div class="sw-name">DEEP<br>NEBULA</div></div>
+            <div class="swatch"><div class="sw-block" style="background:#A8D8EA;"></div><div class="sw-name">智力<br>蓝</div></div>
+            <div class="swatch"><div class="sw-block" style="background:#8B5CF6;"></div><div class="sw-name">紫<br>光</div></div>
+            <div class="swatch"><div class="sw-block" style="background:#E8C9A0;"></div><div class="sw-name">肤色<br>暖</div></div>
+            <div class="swatch"><div class="sw-block" style="background:#0A0A0A; border-color: rgba(255,255,255,0.12);"></div><div class="sw-name">虚空<br>黑</div></div>
+            <div class="swatch"><div class="sw-block" style="background:#2D1B4E;"></div><div class="sw-name">深域<br>星云</div></div>
           </div>
         </div>
 
         <div class="v-card">
-          <div class="v-card-head">Camera Logic</div>
-          <div class="v-card-title">Wide · Mid · Close</div>
-          <div class="v-card-body">Wide: her as the still anchor in a moving world. Mid: control relationship with environment. Close: minimal expression, maximum eye weight.</div>
+          <div class="v-card-head">镜头逻辑</div>
+          <div class="v-card-title">全景 · 中景 · 特写</div>
+          <div class="v-card-body">全景：她在运动世界里是静止的锚。中景：她与环境的控制关系。特写：表情极简，眼神承担叙事重量。</div>
           <div class="do-dont">
-            <div class="do-row"><span class="mk">DO</span>Low-angle shots that create scale and verticality</div>
-            <div class="do-row"><span class="mk">DO</span>Symmetric framing with geometric, industrial architecture</div>
-            <div class="dont-row"><span class="mk">NO</span>Handheld shaky cam implying emotional instability</div>
-            <div class="dont-row"><span class="mk">NO</span>Off-axis placement without deliberate compositional reason</div>
+            <div class="do-row"><span class="mk">宜</span>低机位，强调尺度与纵深感</div>
+            <div class="do-row"><span class="mk">宜</span>对称构图，搭配几何感、工业感建筑</div>
+            <div class="dont-row"><span class="mk">忌</span>手持剧烈晃动，暗示情绪不稳</div>
+            <div class="dont-row"><span class="mk">忌</span>无构图理由的轴线偏移</div>
           </div>
         </div>
 
         <div class="v-card">
-          <div class="v-card-head">Absolute Rules</div>
-          <div class="v-card-title">Do's &amp; Don'ts</div>
-          <div class="v-card-body">Applies to all content: social, product, campaigns, animation.</div>
+          <div class="v-card-head">硬性规则</div>
+          <div class="v-card-title">可做与避免</div>
+          <div class="v-card-body">适用于所有触点：社交、产品、战役、动画。</div>
           <div class="do-dont">
-            <div class="do-row"><span class="mk">DO</span>Let the environment move while she stays still</div>
-            <div class="do-row"><span class="mk">DO</span>Use silence and pause as active storytelling tools</div>
-            <div class="do-row"><span class="mk">DO</span>Show data as something she reads — not reacts to</div>
-            <div class="dont-row"><span class="mk">NO</span>Glazy panicking, second-guessing, or uncertain</div>
-            <div class="dont-row"><span class="mk">NO</span>Loud, excited, or enthusiastic expressions</div>
-            <div class="dont-row"><span class="mk">NO</span>Using her as visual decoration without behavioral intent</div>
+            <div class="do-row"><span class="mk">宜</span>环境在动，她保持不动</div>
+            <div class="do-row"><span class="mk">宜</span>把沉默与停顿当作主动叙事工具</div>
+            <div class="do-row"><span class="mk">宜</span>数据是她读的对象——不是向她扑来的刺激</div>
+            <div class="dont-row"><span class="mk">忌</span>Glazy 惊慌、犹豫、自我怀疑</div>
+            <div class="dont-row"><span class="mk">忌</span>夸张兴奋、过度热情的表情</div>
+            <div class="dont-row"><span class="mk">忌</span>没有行为意图，仅把她当视觉装饰</div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="principles-recap">
-      <p style="margin:0 0 12px;font-family:var(--mono);font-size:var(--text-card-label);letter-spacing:0.14em;text-transform:uppercase;color:var(--purple);">Principles 11–14 · Spatial &amp; data read</p>
-      <p style="margin:0 0 8px;"><strong>11</strong> She is always the axis of the frame — centered or golden ratio; order is defined by her, not placed around her.</p>
-      <p style="margin:0 0 8px;"><strong>12</strong> Minimal expression, maximum eyes — face moves little; gaze carries the line.</p>
-      <p style="margin:0 0 8px;"><strong>13</strong> Environment chaos; Glazy stable — screens and markets pulse; she is the fixed element.</p>
-      <p style="margin:0;"><strong>14</strong> Data flows through her, not at her — she reads inward; never overwhelmed.</p>
+      <p style="margin:0 0 12px;font-family:var(--mono);font-size:var(--text-card-label);letter-spacing:0.12em;text-transform:none;color:var(--purple);">原则 11–14 · 空间与数据阅读</p>
+      <p style="margin:0 0 8px;"><strong>11</strong> 她始终是画面的轴心——居中或黄金分割；秩序由她定义，而不是把她摆进别人的秩序里。</p>
+      <p style="margin:0 0 8px;"><strong>12</strong> 表情极简、眼神最重——面部少动，目光承担叙事线。</p>
+      <p style="margin:0 0 8px;"><strong>13</strong> 环境混乱，Glazy 稳定——屏幕与市场可以跳动；她是固定元素。</p>
+      <p style="margin:0;"><strong>14</strong> 数据流经她，而不是砸向她——向内阅读；永不被淹没。</p>
     </div>
   </div>
 
   <div id="gl-motion-emotion">
-  <!-- ─── MOTION 15-17 ─── -->
   <div class="principle-category">
     <div class="cat-label">
       <div class="cat-label-bar"></div>
-      <div class="cat-label-text">Motion · 15–17</div>
+      <div class="cat-label-text">动作 · 15–17</div>
     </div>
 
     <div class="principle-split">
       <div class="principle-split-main">
         <div class="editorial-block">
           <div class="editorial-num">15</div>
-          <div class="editorial-title">Every action lands first attempt. No hesitation.</div>
-          <div class="editorial-desc">A tap, a head turn, a glance — each happens once, decisively, and completes. Repeated movement breaks character. She is a precision instrument, not an organic impulse.</div>
+          <div class="editorial-title">每个动作一次到位，不犹豫。</div>
+          <div class="editorial-desc">一次点击、一次转头、一瞥——都只发生一次，果断完成。重复动作会破坏人设。她是精密仪器，而不是本能冲动。</div>
         </div>
       </div>
       <div class="principle-split-aside">
         <div class="compact-grid">
           <div class="p-card">
-            <div class="p-card-top"><span class="p-num">16</span><span class="p-cat">Motion</span></div>
-            <div class="p-title">Breath pauses on head turns and eye raises.</div>
-            <div class="p-desc">Movement arrives with a micro-pause, as if loading precision before completing. This gives the "precision instrument" feel.</div>
+            <div class="p-card-top"><span class="p-num">16</span><span class="p-cat">动作</span></div>
+            <div class="p-title">转头与抬眼时带「呼吸停顿」。</div>
+            <div class="p-desc">动作前有一微秒停顿，像在完成前加载精度。这强化「精密仪器」感。</div>
           </div>
           <div class="p-card">
-            <div class="p-card-top"><span class="p-num">17</span><span class="p-cat">Motion</span></div>
-            <div class="p-title">Low frame rate signals mechanical intelligence.</div>
-            <div class="p-desc">8–12fps in animation is not a budget constraint — it's deliberate. She moves like precise machinery, not organic impulse.</div>
+            <div class="p-card-top"><span class="p-num">17</span><span class="p-cat">动作</span></div>
+            <div class="p-title">低帧率传达机械式智力。</div>
+            <div class="p-desc">动画里 8–12fps 不是省预算，而是刻意。她像精密机械运动，而非生物性冲动。</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ─── EMOTION 18-20 ─── -->
   <div class="principle-category">
     <div class="cat-label">
       <div class="cat-label-bar"></div>
-      <div class="cat-label-text">Emotion · 18–20</div>
+      <div class="cat-label-text">情绪 · 18–20</div>
     </div>
 
     <div class="principle-split">
       <div class="principle-split-main">
         <div class="editorial-block">
           <div class="editorial-num">18</div>
-          <div class="editorial-title">She has emotions — compressed behind judgment.</div>
-          <div class="editorial-desc">Glazy is not cold by emptiness. She feels — but only after the decision is complete. Reverse this order and she becomes weak. The compression is the character.</div>
+          <div class="editorial-title">她有情绪——被压缩在判断之后。</div>
+          <div class="editorial-desc">Glazy 的冷不是空洞。她会感受——但只在决策完成之后。颠倒顺序，她就会变弱。压缩感即人设本身。</div>
         </div>
       </div>
       <div class="principle-split-aside">
         <div class="compact-grid">
           <div class="p-card">
-            <div class="p-card-top"><span class="p-num">19</span><span class="p-cat">Emotion</span></div>
-            <div class="p-title">Her protection is anticipation, not comfort.</div>
-            <div class="p-desc">She doesn't soothe — she prevents. She sees risk before it arrives. Her care language: "already handled."</div>
+            <div class="p-card-top"><span class="p-num">19</span><span class="p-cat">情绪</span></div>
+            <div class="p-title">她的保护是预判，不是安慰。</div>
+            <div class="p-desc">她不哄你——她防患于未然。她在风险抵达前就看见它。她的关怀语言是：「已经处理好了。」</div>
           </div>
           <div class="p-card">
-            <div class="p-card-top"><span class="p-num">20</span><span class="p-cat">Emotion</span></div>
-            <div class="p-title">The contrast IS the character: built as a tool, understands more than humans.</div>
-            <div class="p-desc">Never resolve the tension between "designed instrument" and "surpassing human comprehension." It's the source of her appeal.</div>
+            <div class="p-card-top"><span class="p-num">20</span><span class="p-cat">情绪</span></div>
+            <div class="p-title">张力即人设：被设计为工具，却理解得比人更深。</div>
+            <div class="p-desc">永远不要消解「被设计的工具」与「超越人类理解」之间的张力。那是她吸引力的来源。</div>
           </div>
         </div>
       </div>
@@ -1751,83 +1758,83 @@ footer {
 
 <!-- ASSET GALLERY — three lanes (X Branding / Community / Live beta) -->
 <section id="assets" class="assets-section">
-  <div class="s-tag">Assets</div>
-  <h2 class="s-title">Visual system · three lanes</h2>
+  <div class="s-tag">资源</div>
+  <h2 class="s-title">视觉体系 · 三条资源线</h2>
 
   <div class="assets-controls">
     <div class="asset-tabs">
-      <button type="button" class="tab-btn active" onclick="showAssets('xbrand', this)">X Branding</button>
-      <button type="button" class="tab-btn" onclick="showAssets('community', this)">Community</button>
-      <button type="button" class="tab-btn" onclick="showAssets('livebeta', this)">Live (beta)</button>
+      <button type="button" class="tab-btn active" onclick="showAssets('xbrand', this)">X 品牌主视觉</button>
+      <button type="button" class="tab-btn" onclick="showAssets('community', this)">社区</button>
+      <button type="button" class="tab-btn" onclick="showAssets('livebeta', this)">写实测试</button>
     </div>
-    <a href="glazy-assets-bundle.zip" class="assets-download-btn" download="glazy-assets-bundle.zip">Download assets (ZIP)</a>
+    <a href="glazy-assets-bundle.zip" class="assets-download-btn" download="glazy-assets-bundle.zip">下载资源包（ZIP）</a>
   </div>
 
   <!-- COMMUNITY · Chibi -->
   <div id="gallery-community" class="asset-gallery">
-    <p class="assets-tab-lead">Chibi style — cute variants for community and social moments. Grid auto-fills as you add or remove PNGs in <code>Chibi Style/</code>.</p>
-    <div class="gallery-section-label">Chibi Style</div>
+    <p class="assets-tab-lead">Q 版风格：用于社区与社交场景的可爱变体。在 <code>Chibi Style/</code> 文件夹增删 PNG 后，网格会自动填充。</p>
+    <div class="gallery-section-label">Q 版 Chibi</div>
     <div class="aux-images-grid">
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/1_default.png" alt="Chibi default" onerror="assetImgOnError(this)"></div><div class="img-label">Default</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/2_hi.png" alt="Chibi hi" onerror="assetImgOnError(this)"></div><div class="img-label">Hi</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/3_yay.png" alt="Chibi yay" onerror="assetImgOnError(this)"></div><div class="img-label">Yay</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/4_donut.png" alt="Chibi donut" onerror="assetImgOnError(this)"></div><div class="img-label">Donut</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/5_donutyay.png" alt="Chibi donut yay" onerror="assetImgOnError(this)"></div><div class="img-label">Donut yay</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/6_donutstill.png" alt="Chibi donut still" onerror="assetImgOnError(this)"></div><div class="img-label">Donut still</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/7_toofull.png" alt="Chibi too full" onerror="assetImgOnError(this)"></div><div class="img-label">Too full</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/8_confidenteat.png" alt="Chibi confident eat" onerror="assetImgOnError(this)"></div><div class="img-label">Confident eat</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/9_sitquiet.png" alt="Chibi sit quiet" onerror="assetImgOnError(this)"></div><div class="img-label">Sit quiet</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/chibi_transparentlineup.png" alt="Chibi lineup" onerror="assetImgOnError(this)"></div><div class="img-label">Lineup</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/1_default.png" alt="Chibi default" onerror="assetImgOnError(this)"></div><div class="img-label">默认</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/2_hi.png" alt="Chibi hi" onerror="assetImgOnError(this)"></div><div class="img-label">招呼</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/3_yay.png" alt="Chibi yay" onerror="assetImgOnError(this)"></div><div class="img-label">开心</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/4_donut.png" alt="Chibi donut" onerror="assetImgOnError(this)"></div><div class="img-label">甜甜圈</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/5_donutyay.png" alt="Chibi donut yay" onerror="assetImgOnError(this)"></div><div class="img-label">甜甜圈开心</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/6_donutstill.png" alt="Chibi donut still" onerror="assetImgOnError(this)"></div><div class="img-label">甜甜圈静止</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/7_toofull.png" alt="Chibi too full" onerror="assetImgOnError(this)"></div><div class="img-label">吃撑</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/8_confidenteat.png" alt="Chibi confident eat" onerror="assetImgOnError(this)"></div><div class="img-label">自信开吃</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/9_sitquiet.png" alt="Chibi sit quiet" onerror="assetImgOnError(this)"></div><div class="img-label">安静坐</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Chibi%20Style/chibi_transparentlineup.png" alt="Chibi lineup" onerror="assetImgOnError(this)"></div><div class="img-label">角色排表</div></div>
     </div>
   </div>
 
   <!-- X BRANDING · Standard + Gemini -->
   <div id="gallery-xbrand" class="asset-gallery active">
-    <div class="gallery-section-label">Key art &amp; concept breakdown</div>
+    <div class="gallery-section-label">主视觉与设定拆解</div>
     <div class="aux-images-grid aux-grid-key-pair">
       <div class="aux-image-card">
         <div class="aux-image-media" style="aspect-ratio: 16 / 10; max-height: min(70vh, 560px);">
           <img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Standard%20Mascot%20girl/standard_donutgirl.jpg" alt="Standard Donut mascot" onerror="assetImgOnError(this)">
         </div>
-        <div class="img-label">Standard mascot · key art</div>
+        <div class="img-label">标准吉祥物 · 主视觉</div>
       </div>
       <div class="aux-image-card">
         <div class="aux-image-media" style="aspect-ratio: 16 / 10; max-height: min(70vh, 560px);">
           <img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Glazy%20breakdown.jpg" alt="Glazy character concept breakdown sheet" onerror="assetImgOnError(this)">
         </div>
-        <div class="img-label">Character concept breakdown</div>
+        <div class="img-label">角色设定拆解</div>
       </div>
     </div>
-    <div class="gallery-section-label">Source plates</div>
+    <div class="gallery-section-label">源板</div>
     <div class="aux-images-grid aux-source-plates">
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source1.png" alt="Glazy pose sheet 1" onerror="assetImgOnError(this)"></div><div class="img-label">Source plate 1</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source2.png" alt="Glazy pose sheet 2" onerror="assetImgOnError(this)"></div><div class="img-label">Source plate 2</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source3.png" alt="Glazy pose sheet 3" onerror="assetImgOnError(this)"></div><div class="img-label">Source plate 3</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source4.png" alt="Glazy pose sheet 4" onerror="assetImgOnError(this)"></div><div class="img-label">Source plate 4</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source1.png" alt="Glazy pose sheet 1" onerror="assetImgOnError(this)"></div><div class="img-label">源板 1</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source2.png" alt="Glazy pose sheet 2" onerror="assetImgOnError(this)"></div><div class="img-label">源板 2</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source3.png" alt="Glazy pose sheet 3" onerror="assetImgOnError(this)"></div><div class="img-label">源板 3</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/source4.png" alt="Glazy pose sheet 4" onerror="assetImgOnError(this)"></div><div class="img-label">源板 4</div></div>
     </div>
     <div class="gallery-divider"></div>
     <div class="gallery-section-label">Gemini Nanobanana</div>
     <div class="aux-images-grid">
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/original.png" alt="Gemini original" onerror="assetImgOnError(this)"></div><div class="img-label">Original</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/thinking.png" alt="Gemini thinking" onerror="assetImgOnError(this)"></div><div class="img-label">Thinking</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/fightingpose1.png" alt="Gemini fighting pose 1" onerror="assetImgOnError(this)"></div><div class="img-label">Fighting 1</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/fightingpose2.png" alt="Gemini fighting pose 2" onerror="assetImgOnError(this)"></div><div class="img-label">Fighting 2</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/fightingpose3.png" alt="Gemini fighting pose 3" onerror="assetImgOnError(this)"></div><div class="img-label">Fighting 3</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/fightingpose_running.png" alt="Gemini fighting pose running" onerror="assetImgOnError(this)"></div><div class="img-label">Running</div></div>
-      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/holding%20face.png" alt="Gemini holding face" onerror="assetImgOnError(this)"></div><div class="img-label">Holding face</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/original.png" alt="Gemini original" onerror="assetImgOnError(this)"></div><div class="img-label">原设</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/thinking.png" alt="Gemini thinking" onerror="assetImgOnError(this)"></div><div class="img-label">思考</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/fightingpose1.png" alt="Gemini fighting pose 1" onerror="assetImgOnError(this)"></div><div class="img-label">战斗 1</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/fightingpose2.png" alt="Gemini fighting pose 2" onerror="assetImgOnError(this)"></div><div class="img-label">战斗 2</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/fightingpose3.png" alt="Gemini fighting pose 3" onerror="assetImgOnError(this)"></div><div class="img-label">战斗 3</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/fightingpose_running.png" alt="Gemini fighting pose running" onerror="assetImgOnError(this)"></div><div class="img-label">奔跑</div></div>
+      <div class="aux-image-card"><div class="aux-image-media"><img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Gemini%20Nanobanana/holding%20face.png" alt="Gemini holding face" onerror="assetImgOnError(this)"></div><div class="img-label">托脸</div></div>
     </div>
   </div>
 
   <!-- LIVE BETA · photoreal multiview -->
   <div id="gallery-livebeta" class="asset-gallery">
-    <p class="assets-tab-lead">Photoreal multiview sheet — in testing. Full-width frame keeps the entire plate legible.</p>
-    <div class="gallery-section-label">Glazy Real · multiview (beta)</div>
+    <p class="assets-tab-lead">写实多视图参考板——测试中。全宽展示便于阅读整张图。</p>
+    <div class="gallery-section-label">Glazy Real · 多视图（测试）</div>
     <div class="aux-images-grid">
       <div class="aux-image-card aux-span-full">
         <div class="aux-image-media aux-media-ultrawide">
           <img src="glazy%20%E4%B8%89%E7%A7%8D%E5%BD%A2%E6%80%81/Glazy%20Real-multiview.png" alt="Glazy photoreal multiview reference" onerror="assetImgOnError(this)">
         </div>
-        <div class="img-label">Photoreal multiview plate</div>
+        <div class="img-label">写实多视图整板</div>
       </div>
     </div>
   </div>
@@ -1838,8 +1845,8 @@ footer {
   <div class="footer-logo">
     <img src="Donut Logo Color.png" alt="Donut Logo">
   </div>
-  <div class="footer-text">GLAZY CHARACTER GUIDELINES · BRAND &amp; PARTNER REFERENCE</div>
-  <div class="footer-badge">V 4.0 · 2026</div>
+  <div class="footer-text">GLAZY 角色规范 · 品牌与合作参考</div>
+  <div class="footer-badge">V 4.0 · 2026 · 中文版</div>
 </footer>
 
 <script>
@@ -1851,7 +1858,7 @@ function assetImgOnError(img) {
   if (box.querySelector('.asset-img-placeholder')) return;
   var ph = document.createElement('div');
   ph.className = 'asset-img-placeholder';
-  ph.textContent = 'Image not found';
+  ph.textContent = '图片未找到';
   box.appendChild(ph);
 }
 
